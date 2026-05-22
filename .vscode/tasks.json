@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build to IIS",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$source = '${workspaceFolder}'; $target = 'C:\\inetpub\\wwwroot'; if ((Resolve-Path $source).Path -eq (Resolve-Path $target).Path) { Write-Error 'Source and target are the same path.'; exit 1 }; robocopy $source $target /MIR /XD .git .vscode /R:2 /W:1; if ($LASTEXITCODE -le 7) { exit 0 } else { exit $LASTEXITCODE }"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}
