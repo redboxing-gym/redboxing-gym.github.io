@@ -198,6 +198,11 @@ footer.footer .social-link:hover {
   overflow: hidden;
   max-width: 530px;
   margin: auto auto 1rem;
+  cursor: pointer;
+}
+.portfolio-item:focus-visible {
+  outline: 3px solid var(--redboxing-gold);
+  outline-offset: 0.25rem;
 }
 .portfolio-item .caption {
   display: flex;
@@ -266,6 +271,108 @@ footer.footer .social-link:hover {
   line-height: 7.5rem;
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.program-card {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  min-height: 14rem;
+  padding: 0.5rem;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.program-card * {
+  pointer-events: none;
+}
+
+.program-card h4,
+.program-card p {
+  color: inherit;
+}
+
+.program-card:focus-visible {
+  outline: 3px solid var(--redboxing-gold);
+  outline-offset: 0.5rem;
+}
+
+.program-card .service-icon {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.program-card:hover .service-icon,
+.program-card:focus-visible .service-icon {
+  transform: translateY(-0.35rem);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.24);
+}
+
+.program-modal {
+  border: 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.program-modal .modal-header {
+  color: #fff;
+  background: var(--redboxing-red);
+}
+
+.program-modal .modal-body {
+  color: var(--redboxing-dark);
+  line-height: 1.8;
+}
+
+.program-modal .modal-body p {
+  margin-bottom: 1.25rem;
+}
+
+.program-modal .modal-body ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+}
+
+.program-modal .modal-body li + li {
+  margin-top: 0.5rem;
+}
+
+.gallery-modal .modal-body {
+  padding: 0;
+}
+
+.gallery-carousel {
+  background: #111;
+}
+
+.gallery-carousel .carousel-item img {
+  display: block;
+  width: 100%;
+  height: min(62vh, 34rem);
+  object-fit: cover;
+}
+
+.gallery-copy {
+  margin: 0;
+  padding: 1.5rem 1.75rem 1.75rem;
+  color: var(--redboxing-dark);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 575.98px) {
+  .gallery-carousel .carousel-item img {
+    height: 18rem;
+  }
+
+  .gallery-copy {
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
 }
 /* ===== Scroll snap behavior ===== */
 @media (prefers-reduced-motion: no-preference) {
