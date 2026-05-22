@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Build to IIS and Open localhost",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost",
+      "webRoot": "C:\\inetpub\\wwwroot",
+      "preLaunchTask": "Build to IIS"
+    }
+  ]
+}
