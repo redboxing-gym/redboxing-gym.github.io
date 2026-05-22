@@ -54,7 +54,89 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         }
     })
+
+    document.querySelectorAll('[data-modal-target]').forEach(trigger => {
+        trigger.addEventListener('click', event => {
+            const targetSelector = trigger.getAttribute('data-modal-target');
+            const targetModal = document.querySelector(targetSelector);
+
+            if (!targetModal) {
+                return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (window.bootstrap && window.bootstrap.Modal) {
+                window.bootstrap.Modal.getOrCreateInstance(targetModal).show();
+                return;
+            }
+
+            openFallbackModal(targetModal);
+        });
+
+        trigger.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') {
+                return;
+            }
+
+            event.preventDefault();
+            trigger.click();
+        });
+    });
+
+    document.addEventListener('click', event => {
+        const closeButton = event.target.closest('[data-bs-dismiss="modal"]');
+        if (!closeButton || window.bootstrap && window.bootstrap.Modal) {
+            return;
+        }
+
+        const targetModal = closeButton.closest('.modal');
+        if (targetModal) {
+            closeFallbackModal(targetModal);
+        }
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || window.bootstrap && window.bootstrap.Modal) {
+            return;
+        }
+
+        const openModal = document.querySelector('.modal.show');
+        if (openModal) {
+            closeFallbackModal(openModal);
+        }
+    });
 })
+
+function openFallbackModal(modal) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop fade show';
+    backdrop.dataset.fallbackBackdrop = 'true';
+    backdrop.addEventListener('click', () => closeFallbackModal(modal));
+
+    document.body.appendChild(backdrop);
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+
+    modal.classList.add('show');
+    modal.removeAttribute('aria-hidden');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('role', 'dialog');
+    modal.style.display = 'block';
+}
+
+function closeFallbackModal(modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
+    modal.removeAttribute('role');
+    modal.style.display = 'none';
+
+    document.querySelectorAll('[data-fallback-backdrop="true"]').forEach(backdrop => backdrop.remove());
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+}
 
 function fadeOut(el) {
     el.style.opacity = 1;
