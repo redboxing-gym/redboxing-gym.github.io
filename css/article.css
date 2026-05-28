@@ -62,8 +62,10 @@
 }
 
 .article-topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 20;
   border-bottom: 1px solid rgba(17, 17, 17, 0.08);
   background: rgba(255, 255, 255, 0.94);
@@ -101,7 +103,7 @@
 }
 
 .article-hero {
-  padding: 5rem 0 3rem;
+  padding: 9.5rem 0 3rem;
   background: #f8f9fa;
 }
 
@@ -254,7 +256,7 @@
   }
 
   .article-hero {
-    padding-top: 3.5rem;
+    padding-top: 10rem;
   }
 
   .article-card-body,
