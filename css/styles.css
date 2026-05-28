@@ -376,7 +376,7 @@ footer.footer .social-link:hover {
 }
 /* ===== Scroll snap behavior ===== */
 @media (prefers-reduced-motion: no-preference) {
-  html {
+  html.landing-scroll {
     scroll-behavior: smooth;
     scroll-snap-type: y proximity;
   }
@@ -391,7 +391,7 @@ footer.footer .social-link:hover {
 }
 
 @media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
-  html {
+  html.landing-scroll {
     scroll-snap-type: y mandatory;
   }
 }
