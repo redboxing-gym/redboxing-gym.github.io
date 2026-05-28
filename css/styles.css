@@ -424,7 +424,7 @@ body {
 }
 
 .red-hero {
-  background-image: url("../assets/img/bg-header.png");
+  background-image: url("../assets/img/bg-header.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -447,7 +447,7 @@ body {
 }
 
 .red-callout {
-  background-image: url("../assets/img/bg-callout.png");
+  background-image: url("../assets/img/bg-callout.webp");
   background-color: #000;
   background-position: center top;
   background-repeat: no-repeat;
@@ -464,7 +464,7 @@ body {
 
 @media (max-width: 767.98px) {
   .red-callout {
-    background-image: url("../assets/img/bg-callout-mb.png");
+    background-image: url("../assets/img/bg-callout-mb.webp");
     background-position: center top;
   }
 }
