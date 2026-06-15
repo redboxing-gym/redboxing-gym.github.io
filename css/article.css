@@ -180,6 +180,132 @@
   background: #fff4f5;
 }
 
+.article-infographic {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 1rem 2rem rgba(17, 17, 17, 0.08);
+}
+
+.article-infographic-header {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.article-infographic-header h2 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.article-infographic-badge {
+  flex: 0 0 auto;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--redboxing-red);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.calorie-chart {
+  display: grid;
+  gap: 1rem;
+}
+
+.calorie-row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.calorie-label {
+  color: #495057;
+  font-weight: 800;
+}
+
+.calorie-track {
+  min-height: 1.1rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #f1f3f5;
+}
+
+.calorie-bar {
+  display: block;
+  width: var(--bar-width);
+  min-height: 1.1rem;
+  border-radius: inherit;
+  background: #adb5bd;
+}
+
+.calorie-row.is-boxing {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: #fff4f5;
+}
+
+.calorie-row.is-boxing .calorie-label,
+.calorie-row.is-boxing .calorie-value {
+  color: var(--redboxing-red);
+}
+
+.calorie-row.is-boxing .calorie-bar {
+  background: linear-gradient(90deg, var(--redboxing-red), #ff3b5c);
+  box-shadow: 0 0.5rem 1rem rgba(217, 4, 41, 0.22);
+}
+
+.calorie-value {
+  color: #343a40;
+  font-weight: 900;
+  text-align: right;
+}
+
+.calorie-highlight-note {
+  display: grid;
+  margin-top: 1rem;
+  padding: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(217, 4, 41, 0.18);
+  border-radius: 0.75rem;
+  background: #fff4f5;
+}
+
+.calorie-highlight-note strong {
+  display: block;
+  color: var(--redboxing-red);
+  font-size: 1rem;
+}
+
+.calorie-highlight-note span {
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.calorie-highlight-value {
+  color: var(--redboxing-red);
+  font-size: 1.3rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.article-source-list {
+  padding-left: 1.2rem;
+}
+
+.article-source-list a {
+  color: var(--redboxing-red);
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .article-side {
   position: sticky;
   top: 6rem;
@@ -262,5 +388,30 @@
   .article-card-body,
   .article-bottom-cta {
     padding: 1.5rem;
+  }
+
+  .article-infographic {
+    padding: 1.25rem;
+  }
+
+  .article-infographic-header,
+  .calorie-row {
+    grid-template-columns: 1fr;
+  }
+
+  .article-infographic-header {
+    display: grid;
+  }
+
+  .calorie-row {
+    gap: 0.45rem;
+  }
+
+  .calorie-value {
+    text-align: left;
+  }
+
+  .calorie-highlight-note {
+    grid-template-columns: 1fr;
   }
 }
