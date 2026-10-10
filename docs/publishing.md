@@ -1,0 +1,50 @@
+# 빌드, 검증, 게시 전환
+
+## 현재 단계
+
+작업 브랜치와 PR에서 빌드·검증만 수행합니다. 배포 워크플로, 자동 병합, Pages 설정 변경은 포함하지 않았습니다. 현재 GitHub의 `pages-build-deployment`와 main 게시 방식은 유지됩니다. **이 PR은 전환 승인을 받을 때까지 병합하지 않습니다.** 브랜치 기반 Jekyll에 Markdown 원고가 노출되는 것을 막으려면 Actions 전환이 병합 전에 조율되어야 합니다.
+
+## 로컬 검증
+
+Python 3.12 이상을 사용합니다. CI 기준은 3.12입니다.
+
+```powershell
+python -m pip install -r requirements-content.txt
+python scripts/check_changes.py
+python -m unittest discover -s tests -v
+python scripts/build.py
+python scripts/validate.py
+python -m http.server 8000 --directory dist
+```
+
+빌드는 루트의 고정 `dist/`만 재생성합니다. 원본 HTML·CSS·JS·사이트맵을 덮어쓰지 않습니다. 초안으로 전환한 원고의 이전 출력도 남지 않습니다. 의존성은 버전 고정이며 데이터베이스·서버·OpenAI API가 필요 없습니다.
+
+기존 아티클 5개와 Google·Naver 소유권 확인 파일은 원본 SHA-256, Git 기준 커밋, 배포 결과를 비교합니다. 기준 커밋은 `a5e9b1c67652d5d197e4134328ebfdb7e29d7a2d`입니다. 기존 URL·canonical·JSON-LD를 포함한 파일 전체가 보존됩니다.
+
+기존 메인 카드·순서는 보존하고 공개 신규 글의 카드만 출력의 `#articles`에 추가합니다. 신규 글은 명시된 관련 글을 먼저, 같은 태그를 가진 글을 다음으로 최대 3개 연결합니다. 기존 아티클의 관련 글 HTML은 변경하지 않습니다. 따라서 **기존 글 본문에 신규 링크를 삽입하지 않습니다.** 신규 글 간 연결과 메인·전체 목록 연결이 자동화 범위입니다. `/articles/index.html`에서 기존·신규 공개 글 전체를 확인할 수 있습니다.
+
+두 사이트맵 파일명과 기존 URL·lastmod를 유지하고 목록 페이지와 공개 신규 글을 추가합니다. 수정일은 원고 메타데이터를 사용하며 빌드 시각을 넣지 않습니다. robots.txt와 검색엔진 확인 파일은 그대로 복사합니다. 외부 링크는 URL 프로토콜만 검사하고 실제 HTTP 응답은 검사하지 않습니다. 외부 서비스 장애가 PR을 막지 않도록 하기 위함입니다. 내부 파일·앵커·이미지·CSS·JS와 모달 대상은 검사합니다.
+
+원고·템플릿·스크립트·내부 문서는 배포 아티팩트에 복사하지 않습니다. 기존 정적 자산 디렉터리는 그대로 복사합니다. `dist/`는 커밋하지 않습니다.
+
+## PR 워크플로
+
+`.github/workflows/content-check.yml`은 main 대상 `pull_request`와 수동 검증만 실행합니다. 모든 PR을 검사하므로 필수 검증이 파일 필터 때문에 Pending에 머물지 않습니다. `contents: read` 권한만 사용하며 배포·커밋·승인·병합·댓글 작성 권한을 요청하지 않습니다. `pull_request_target`도 사용하지 않습니다.
+
+무료 표준 `ubuntu-latest` 러너 1개, 최대 10분, 동시 실행 취소, 아티팩트 3일 보존으로 사용량을 제한합니다. 공개 저장소의 표준 GitHub-hosted 러너 정책을 활용합니다. 아티팩트 저장공간과 GitHub 계정 정책은 관리자가 확인해야 하며 유료 러너나 유료 서비스는 도입하지 않습니다.
+
+## 별도 승인 후 필요한 수동 설정
+
+1. Settings → Pages의 현 게시 브랜치·폴더를 기록합니다. 현재 API 배포 기록은 main이며 설정 조회는 인증이 필요합니다.
+2. main 규칙에 직접 push 제한, PR 필수, `content-check` 필수 검사, 승인 조건을 설정합니다. 본인만 관리하는 저장소에서는 본인 PR을 스스로 승인할 수 없으므로 실제 리뷰어 구성에 맞게 승인 수를 정해야 합니다. 자동 병합은 활성화하지 않습니다.
+3. **별도 승인된 후속 변경**으로 main push 전용 Pages 배포 워크플로를 준비합니다. 동일 빌드·검증 후 `dist/`만 업로드하고 배포합니다. PR 이벤트의 배포를 금지하고 배포 job에만 `pages: write`, `id-token: write`를 부여합니다.
+4. 초기 구조 PR과 후속 배포 변경의 병합·Pages 게시 소스 전환을 조율합니다. 브랜치 게시가 Markdown을 처리하지 않도록, 실제 병합 전에 Pages 소스를 GitHub Actions로 전환하는 절차를 승인받습니다. 전환과 병합 사이에는 마지막 성공 배포를 유지하도록 확인합니다.
+5. 초기 배포 성공 후 기존 URL·전화·카카오톡·모바일 레이아웃·사이트맵을 확인합니다. 이 검증용 초안은 공개하지 않습니다.
+
+Actions 배포 전환이 완료되기 전에는 Markdown만 추가해 **PR 빌드·SEO 검사**까지 자동화됩니다. 자동 실제 게시까지 연결하는 것은 후속 승인 범위입니다.
+
+## 복구
+
+새 배포 실패 시 마지막 성공 사이트가 유지되는지 확인하고, 변경을 되돌리는 PR에서 검증 후 main에 병합합니다. 기존 방식으로 복귀해야 한다면 Markdown·템플릿·빌드 파일을 제외한 기존 정적 사이트 커밋을 게시 소스로 사용합니다. 현재 콘텐츠 브랜치를 그대로 Jekyll 게시로 되돌리면 초안 Markdown이 처리될 수 있으므로 금지합니다. 직접 main 수정이나 생성 결과 강제 push는 사용하지 않습니다.
+
+공식 문서: [Pages 게시 소스](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [Actions 과금](https://docs.github.com/en/billing/concepts/product-billing/github-actions), [워크플로 트리거](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow).
