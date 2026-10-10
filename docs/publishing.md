@@ -29,22 +29,20 @@ python -m http.server 8000 --directory dist
 
 ## PR 워크플로
 
-`.github/workflows/content-check.yml`은 main 대상 `pull_request`와 수동 검증만 실행합니다. 모든 PR을 검사하므로 필수 검증이 파일 필터 때문에 Pending에 머물지 않습니다. `contents: read` 권한만 사용하며 배포·커밋·승인·병합·댓글 작성 권한을 요청하지 않습니다. `pull_request_target`도 사용하지 않습니다.
+`.github/workflows/content-check.yml`은 main 또는 `feature/markdown-content-system` 대상 `pull_request`와 수동 검증만 실행합니다. 후자는 콘텐츠 PR 위에 쌓은 별도 배포 PR의 검증 대상입니다. 파일 필터가 없으므로 필수 검증이 파일 필터 때문에 Pending에 머물지 않습니다. `contents: read` 권한만 사용하며 배포·커밋·승인·병합·댓글 작성 권한을 요청하지 않습니다. `pull_request_target`도 사용하지 않습니다.
 
 무료 표준 `ubuntu-latest` 러너 1개, 최대 10분, 동시 실행 취소, 아티팩트 3일 보존으로 사용량을 제한합니다. 공개 저장소의 표준 GitHub-hosted 러너 정책을 활용합니다. 아티팩트 저장공간과 GitHub 계정 정책은 관리자가 확인해야 하며 유료 러너나 유료 서비스는 도입하지 않습니다.
 
 ## 별도 승인 후 필요한 수동 설정
 
-1. Settings → Pages의 현 게시 브랜치·폴더를 기록합니다. 현재 API 배포 기록은 main이며 설정 조회는 인증이 필요합니다.
-2. main 규칙에 직접 push 제한, PR 필수, `content-check` 필수 검사, 승인 조건을 설정합니다. 본인만 관리하는 저장소에서는 본인 PR을 스스로 승인할 수 없으므로 실제 리뷰어 구성에 맞게 승인 수를 정해야 합니다. 자동 병합은 활성화하지 않습니다.
-3. **별도 승인된 후속 변경**으로 main push 전용 Pages 배포 워크플로를 준비합니다. 동일 빌드·검증 후 `dist/`만 업로드하고 배포합니다. PR 이벤트의 배포를 금지하고 배포 job에만 `pages: write`, `id-token: write`를 부여합니다.
-4. 초기 구조 PR과 후속 배포 변경의 병합·Pages 게시 소스 전환을 조율합니다. 브랜치 게시가 Markdown을 처리하지 않도록, 실제 병합 전에 Pages 소스를 GitHub Actions로 전환하는 절차를 승인받습니다. 전환과 병합 사이에는 마지막 성공 배포를 유지하도록 확인합니다.
-5. 초기 배포 성공 후 기존 URL·전화·카카오톡·모바일 레이아웃·사이트맵을 확인합니다. 이 검증용 초안은 공개하지 않습니다.
+정확한 승인·병합·게시 소스 전환 순서와 단계별 장애 복구는 [전환 절차](deployment-transition.md)를 따릅니다. 배포 구현은 `feature/pages-actions-deployment`의 별도 미병합 PR에서 검토합니다. 이 콘텐츠 PR에는 배포 워크플로가 없습니다.
+
+main 직접 push 제한, PR 및 `content-check` 필수 검사, 리뷰 조건을 설정해야 합니다. 본인 PR을 스스로 승인할 수 없으므로 실제 리뷰어 구성에 맞게 승인 수를 정합니다. 자동 병합은 활성화하지 않습니다. 배포 전용 활성화 변수는 별도 승인 전에는 설정하지 않습니다.
 
 Actions 배포 전환이 완료되기 전에는 Markdown만 추가해 **PR 빌드·SEO 검사**까지 자동화됩니다. 자동 실제 게시까지 연결하는 것은 후속 승인 범위입니다.
 
 ## 복구
 
-새 배포 실패 시 마지막 성공 사이트가 유지되는지 확인하고, 변경을 되돌리는 PR에서 검증 후 main에 병합합니다. 기존 방식으로 복귀해야 한다면 Markdown·템플릿·빌드 파일을 제외한 기존 정적 사이트 커밋을 게시 소스로 사용합니다. 현재 콘텐츠 브랜치를 그대로 Jekyll 게시로 되돌리면 초안 Markdown이 처리될 수 있으므로 금지합니다. 직접 main 수정이나 생성 결과 강제 push는 사용하지 않습니다.
+실패 단계에 따라 복구 방법이 달라집니다. [전환 절차의 복구 표](deployment-transition.md)를 확인하세요. Markdown이 포함된 main을 Jekyll 게시로 되돌리거나 생성 결과를 main에 강제 push하지 않습니다.
 
 공식 문서: [Pages 게시 소스](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [Actions 과금](https://docs.github.com/en/billing/concepts/product-billing/github-actions), [워크플로 트리거](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow).

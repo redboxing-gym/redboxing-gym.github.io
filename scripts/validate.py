@@ -54,6 +54,14 @@ class Page(HTMLParser):
 
 
 def validate(root, out, manifest, articles):
+    # Static deployment has no reason to contain source or build tooling.
+    for path in out.rglob('*'):
+        relative = path.relative_to(out)
+        require(not path.is_symlink(), f'Deployment symlink forbidden: {relative}')
+        require(relative.parts[0] not in {'content', 'scripts', 'templates', 'tests', 'docs', '.github', '.git'},
+                f'Build source leaked into output: {relative}')
+        require(path.suffix.lower() not in {'.md', '.py', '.yml', '.yaml'},
+                f'Source file leaked into output: {relative}')
     for path, digest in manifest['protected'].items():
         require((out / path).is_file() and hashlib.sha256((out / path).read_bytes()).hexdigest() == digest,
                 f'Protected output changed: {path}')

@@ -88,6 +88,22 @@ class ContentTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'broken resource'):
             build(self.root)
 
+    def test_template_encoding_and_corruption_guard(self):
+        expected = {'article.html': ['레드복싱', '작성', '수정', '관련 글', '전체 글 보기'],
+                    'article-list.html': ['복싱 운동 가이드', '레드복싱'],
+                    'article-card.html': ['아티클 보기']}
+        for name, labels in expected.items():
+            path = self.root / 'templates' / name
+            original = path.read_text(encoding='utf-8', errors='strict')
+            for label in labels:
+                self.assertIn(label, original)
+            for broken in ['??', '????', '? ? ??', '\ufffd']:
+                with self.subTest(template=name, broken=broken):
+                    path.write_text(original.replace(labels[0], broken), encoding='utf-8')
+                    with self.assertRaisesRegex(ValueError, 'corrupted template text'):
+                        build(self.root)
+                    path.write_text(original, encoding='utf-8')
+
     def test_links_anchors_and_unsafe_protocol(self):
         self.change('draft: true', 'draft: false')
         source = self.draft.read_text(encoding='utf-8')
@@ -109,6 +125,22 @@ class ContentTests(unittest.TestCase):
         manifest, _, articles = load_articles(self.root)
         with self.assertRaisesRegex(ValueError, 'Protected output changed'):
             validate(self.root, out, manifest, articles)
+
+    def test_deployment_excludes_source_files(self):
+        out = build(self.root)
+        manifest, _, articles = load_articles(self.root)
+        for path in ['scripts/build.py', 'content/articles/raw.md', 'templates/article.html',
+                     'tests/test_content.py', 'assets/source.md']:
+            with self.subTest(path=path):
+                leaked = out / path
+                leaked.parent.mkdir(parents=True, exist_ok=True)
+                leaked.write_text('source', encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'leaked into output'):
+                    validate(self.root, out, manifest, articles)
+                leaked.unlink()
+                # The forbidden directory must also be absent from the artifact.
+                if path.split('/')[0] in {'scripts', 'content', 'templates', 'tests'}:
+                    shutil.rmtree(out / path.split('/')[0])
 
 
 if __name__ == '__main__':

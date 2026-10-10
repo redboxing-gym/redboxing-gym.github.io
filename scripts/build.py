@@ -91,7 +91,19 @@ def load_articles(root):
     return manifest, legacy, articles
 
 
+def validate_templates(root):
+    for path in sorted((root / 'templates').glob('*.html')):
+        text = path.read_text(encoding='utf-8', errors='strict')
+        # Templates contain labels, not prose questions; reject replacement runs
+        # and question-mark words while allowing an ordinary final question mark.
+        require('\ufffd' not in text and not re.search(r'\?{2,}|(?<!\S)\?(?=\s)', text),
+                f'{path.name}: corrupted template text')
+
+
+
+
 def build(root=ROOT):
+    validate_templates(root)
     manifest, legacy, articles = load_articles(root)
     public = sorted([a for a in articles if not a['draft']], key=lambda a: (a['published'], a['slug']), reverse=True)
     catalog = legacy + public

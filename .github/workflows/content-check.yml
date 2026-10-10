@@ -2,7 +2,7 @@ name: Content validation
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feature/markdown-content-system]
   workflow_dispatch:
 
 permissions:

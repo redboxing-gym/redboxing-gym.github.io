@@ -1,0 +1,120 @@
+[
+  {
+    "page": "article",
+    "viewport": "desktop",
+    "title": "복싱 첫 수업 준비 안내 (검증용 초안) | 레드복싱",
+    "h1": "복싱 첫 수업 준비 안내 (검증용 초안)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      }
+    ],
+    "cards": 0,
+    "related": [
+      "/articles/boxing-diet-beginner.html",
+      "/articles/boxing-calorie-burn.html",
+      "/articles/euljiro-diet-workout.html",
+      "/articles/index.html"
+    ],
+    "errors": []
+  },
+  {
+    "page": "list",
+    "viewport": "desktop",
+    "title": "복싱 운동 가이드 | 레드복싱",
+    "h1": "복싱 운동 가이드",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "images": [
+      {
+        "src": "/assets/img/gym.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/stress.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/private.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/boxing-calorie-hero.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      }
+    ],
+    "cards": 6,
+    "related": [],
+    "errors": []
+  },
+  {
+    "page": "article",
+    "viewport": "mobile",
+    "title": "복싱 첫 수업 준비 안내 (검증용 초안) | 레드복싱",
+    "h1": "복싱 첫 수업 준비 안내 (검증용 초안)",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      }
+    ],
+    "cards": 0,
+    "related": [
+      "/articles/boxing-diet-beginner.html",
+      "/articles/boxing-calorie-burn.html",
+      "/articles/euljiro-diet-workout.html",
+      "/articles/index.html"
+    ],
+    "errors": []
+  },
+  {
+    "page": "list",
+    "viewport": "mobile",
+    "title": "복싱 운동 가이드 | 레드복싱",
+    "h1": "복싱 운동 가이드",
+    "width": 390,
+    "scrollWidth": 390,
+    "images": [
+      {
+        "src": "/assets/img/gym.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/stress.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/private.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/boxing-calorie-hero.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      },
+      {
+        "src": "/assets/img/freetime.webp",
+        "ok": true
+      }
+    ],
+    "cards": 6,
+    "related": [],
+    "errors": []
+  }
+]
