@@ -1,0 +1,70 @@
+name: Deploy GitHub Pages
+
+# No pull_request trigger. Keep PAGES_ACTIONS_ENABLED unset until approved.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main' && vars.PAGES_ACTIONS_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned build dependencies
+        run: python -m pip install -r requirements-content.txt
+      - name: Check original files and published URL history
+        # HEAD^ is the main state before a merge/squash/rebase commit.
+        # This check is also run in PR CI against the actual PR base SHA.
+        run: |
+          export BASE_SHA="$(git rev-parse HEAD^)"
+          python scripts/check_changes.py
+      - name: Regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Build static site (draft HTML excluded)
+        run: python scripts/build.py
+      - name: Verify SEO, resources and artifact boundaries
+        run: python scripts/validate.py
+      - name: Read Pages metadata without changing settings
+        uses: actions/configure-pages@v5
+        with:
+          enablement: false
+      - name: Upload only the validated static output
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/
+          retention-days: 1
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && vars.PAGES_ACTIONS_ENABLED == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the build artifact to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
