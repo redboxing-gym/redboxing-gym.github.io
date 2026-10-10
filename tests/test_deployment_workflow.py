@@ -1,4 +1,5 @@
 """Static safety tests; never request live Pages permissions or deployment."""
+import json
 import unittest
 from pathlib import Path
 
@@ -50,6 +51,19 @@ class DeploymentWorkflowTests(unittest.TestCase):
             self.assertEqual(job['runs-on'], 'ubuntu-latest')
             self.assertEqual(job['timeout-minutes'], '10')
         self.assertEqual(self.workflow['concurrency']['cancel-in-progress'], 'false')
+
+    def test_first_and_later_runs_use_the_same_full_history_guard(self):
+        steps = self.workflow['jobs']['build']['steps']
+        policy = [s['run'] for s in steps if 'scripts/check_changes.py' in s.get('run', '')]
+        self.assertEqual(policy, ['python scripts/check_changes.py --mode deployment --require-main-tip'])
+        serialized = json.dumps(self.workflow)
+        self.assertNotIn('HEAD^', serialized)
+        self.assertNotIn('BASE_SHA', serialized)
+        checkout = next(s for s in steps if s.get('uses') == 'actions/checkout@v4')
+        self.assertEqual(checkout['with']['fetch-depth'], '0')
+        self.assertEqual(checkout['with']['persist-credentials'], 'false')
+        self.assertLess(next(i for i,s in enumerate(steps) if s.get('run') in policy),
+                        next(i for i,s in enumerate(steps) if s.get('uses') == 'actions/upload-pages-artifact@v4'))
 
 
 if __name__ == '__main__':
