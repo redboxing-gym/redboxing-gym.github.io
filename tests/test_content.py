@@ -29,6 +29,9 @@ class ContentTests(unittest.TestCase):
         self.draft.write_text(self.draft.read_text(encoding='utf-8').replace(before, after), encoding='utf-8')
 
     def test_draft_never_emitted_and_stale_output_removed(self):
+        # Capture the baseline with any already-published articles present.
+        baseline = build(self.root)
+        expected_home = (baseline / 'index.html').read_bytes()
         self.change('draft: true', 'draft: false')
         out = build(self.root)
         self.assertTrue((out / 'articles/boxing-first-class.html').exists())
@@ -37,7 +40,7 @@ class ContentTests(unittest.TestCase):
         self.assertFalse((out / 'articles/boxing-first-class.html').exists())
         for name in ['index.html', 'articles/index.html', 'sitemap.xml', 'sitemap-pages.xml']:
             self.assertNotIn('/articles/boxing-first-class.html', (out / name).read_text(encoding='utf-8'))
-        self.assertEqual((ROOT / 'index.html').read_bytes(), (out / 'index.html').read_bytes())
+        self.assertEqual(expected_home, (out / 'index.html').read_bytes())
 
     def test_published_links_seo_and_determinism(self):
         self.change('draft: true', 'draft: false')
