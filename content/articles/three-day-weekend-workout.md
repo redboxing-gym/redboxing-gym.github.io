@@ -21,7 +21,7 @@ tags:
 related:
   - "/articles/hangsin-diet-workout.html"
   - "/articles/boxing-diet-beginner.html"
-draft: true
+draft: false
 ---
 
 ## 운동은 꼭 매일 해야 할까?
