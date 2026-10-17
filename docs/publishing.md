@@ -1,8 +1,8 @@
-# 빌드, 검증, 게시 전환
+# 빌드, 검증, 게시 운영
 
-## 현재 단계
+## 현재 운영 상태
 
-작업 브랜치와 PR에서 빌드·검증만 수행합니다. 배포 워크플로, 자동 병합, Pages 설정 변경은 포함하지 않았습니다. 현재 GitHub의 `pages-build-deployment`와 main 게시 방식은 유지됩니다. **이 PR은 전환 승인을 받을 때까지 병합하지 않습니다.** 브랜치 기반 Jekyll에 Markdown 원고가 노출되는 것을 막으려면 Actions 전환이 병합 전에 조율되어야 합니다.
+Pages 게시 소스는 **GitHub Actions**이며 `PAGES_ACTIONS_ENABLED=true`로 자동 배포가 활성화되어 있습니다(2026-10-16 사용자 제공 상태). `.github/workflows/pages-deploy.yml`은 main push와 수동 실행을 받고, main 및 활성화 변수 조건을 모두 만족할 때 검증·배포합니다. PR에서는 `content-check`만 수행하며 배포하지 않습니다. 사람의 검토·병합 뒤 main 변경이 실제 게시로 이어지므로 공개 여부를 병합 전에 확인합니다.
 
 ## 로컬 검증
 
@@ -16,6 +16,8 @@ python scripts/build.py
 python scripts/validate.py
 python -m http.server 8000 --directory dist
 ```
+
+Windows에서 기존 보호 HTML이 CRLF로 체크아웃되어 있으면 Git 변경이 없어도 바이트 해시 검사가 실패할 수 있습니다. 보호 파일·기준 해시·검증 코드를 고치지 말고 줄바꿈 차이를 보고합니다. 검증은 별도 임시 복제본을 `git clone --config core.autocrlf=false <저장소> <임시경로>`로 만들어 Git 원본 바이트로 수행할 수 있습니다. 이때 미커밋 문서 변경도 복사하고 사용한 Python 버전과 실행 위치를 결과에 기록합니다.
 
 빌드는 루트의 고정 `dist/`만 재생성합니다. 원본 HTML·CSS·JS·사이트맵을 덮어쓰지 않습니다. 초안으로 전환한 원고의 이전 출력도 남지 않습니다. 의존성은 버전 고정이며 데이터베이스·서버·OpenAI API가 필요 없습니다.
 
@@ -35,20 +37,20 @@ python -m http.server 8000 --directory dist
 
 ## PR 워크플로
 
-`.github/workflows/content-check.yml`은 main 또는 `feature/markdown-content-system` 대상 `pull_request`와 수동 검증만 실행합니다. 후자는 콘텐츠 PR 위에 쌓은 별도 배포 PR의 검증 대상입니다. 파일 필터가 없으므로 필수 검증이 파일 필터 때문에 Pending에 머물지 않습니다. `contents: read` 권한만 사용하며 배포·커밋·승인·병합·댓글 작성 권한을 요청하지 않습니다. `pull_request_target`도 사용하지 않습니다.
+`.github/workflows/content-check.yml`은 main 또는 `feature/markdown-content-system` 대상 `pull_request`와 수동 검증만 실행합니다. 후자는 전환 당시의 호환 대상이며 신규 콘텐츠 PR의 대상은 main입니다. 파일 필터가 없으므로 필수 검증이 파일 필터 때문에 Pending에 머물지 않습니다. `contents: read` 권한만 사용하며 배포·커밋·승인·병합·댓글 작성 권한을 요청하지 않습니다. `pull_request_target`도 사용하지 않습니다.
 
 무료 표준 `ubuntu-latest` 러너 1개, 최대 10분, 동시 실행 취소, 아티팩트 3일 보존으로 사용량을 제한합니다. 공개 저장소의 표준 GitHub-hosted 러너 정책을 활용합니다. 아티팩트 저장공간과 GitHub 계정 정책은 관리자가 확인해야 하며 유료 러너나 유료 서비스는 도입하지 않습니다.
 
-## 별도 승인 후 필요한 수동 설정
+## 배포 안전장치와 사람의 검토
 
-정확한 승인·병합·게시 소스 전환 순서와 단계별 장애 복구는 [전환 절차](deployment-transition.md)를 따릅니다. 배포 구현은 `feature/pages-actions-deployment`의 별도 미병합 PR에서 검토합니다. 이 콘텐츠 PR에는 배포 워크플로가 없습니다.
+`.github/workflows/pages-deploy.yml`은 검증된 `dist/`만 업로드합니다. 빌드 job은 `contents: read`, `pages: read`를 사용하고 배포 job에만 `pages: write`, `id-token: write`를 부여합니다. `github-pages` 환경을 사용하며 배포 동시 실행은 취소하지 않습니다. main·활성화 변수 조건, 전체 이력 검사, 최신 main 확인, 테스트 및 SEO·리소스 검증을 우회하지 않습니다.
 
-main 직접 push 제한, PR 및 `content-check` 필수 검사, 리뷰 조건을 설정해야 합니다. 본인 PR을 스스로 승인할 수 없으므로 실제 리뷰어 구성에 맞게 승인 수를 정합니다. 자동 병합은 활성화하지 않습니다. 배포 전용 활성화 변수는 별도 승인 전에는 설정하지 않습니다.
-
-Actions 배포 전환이 완료되기 전에는 Markdown만 추가해 **PR 빌드·SEO 검사**까지 자동화됩니다. 자동 실제 게시까지 연결하는 것은 후속 승인 범위입니다.
+정기 콘텐츠는 신규 Markdown 아티클 1개와 해당 글에 실제 사용되는 신규 WebP 이미지들만 GitHub Draft PR로 제출합니다. 파일 개수의 고정 제한은 없으며 기존 사이트 코드·아티클·이미지·스크립트·워크플로·기획 문서는 변경하지 않습니다. `ARTICLE_IDEAS.md`는 참고자료로만 사용하고 수정하지 않습니다. 원고는 `draft: false`로 제출하며 GitHub Draft PR 상태와 Markdown `draft` 값은 별개입니다. PR 병합 전에는 실제 게시되지 않습니다. 사람은 원고·근거·이미지·검증 결과를 확인하고 Draft PR을 검토 가능한 상태로 전환해 병합하며, 이 병합 승인이 게시 승인입니다. 병합 후 GitHub Actions가 검증에 성공하면 자동 배포합니다. 기존 `draft: true` 검증용 초안은 유지합니다. 기획 단계에서 본문과 시각자료를 함께 설계합니다. 신규 이미지는 내장 `image_gen`으로 생성하고 모두 WebP로 저장합니다. 대표 이미지는 실제 표시 영역에 적합한 해상도·비율을 선택하며 고정 필수 규격은 없습니다. 완성 본문을 기준으로 제작한 세로형 단일 이미지의 4컷 요약 만화를 글 초반에 넣고, 본문 설명 이미지는 이해에 필요한 만큼 개수·비율 제한 없이 생성합니다. 장식성 이미지는 만들지 않습니다. 모든 최종 이미지를 실제 디코딩해 형식·픽셀 크기를 기록하고 경로·대체 텍스트·본문 일치·실제 사용을 확인합니다. 기존 이미지를 신규 생성물로 취급하지 않습니다. 기존 빌드 검사 통과만으로 이미지 검증이 충분하다고 간주하지 않습니다. 대표/카드 잘림과 모바일 만화 가독성·가로 넘침을 검토하며 [레이아웃 분석과 현재 본문 이미지의 반응형 한계](content-authoring.md#실제-표시-영역과-권장-규격)를 따릅니다. main 직접 push, 자동 승인·자동 병합은 금지합니다. 브랜치 보호 및 필수 검사·리뷰 조건의 실제 설정 여부는 코드만으로 확인할 수 없으며 변경이 필요하면 관리자에게 별도로 요청합니다. Codex가 Pages 설정이나 저장소 변수를 임의로 변경하지 않습니다.
 
 ## 복구
 
-실패 단계에 따라 복구 방법이 달라집니다. [전환 절차의 복구 표](deployment-transition.md)를 확인하세요. Markdown이 포함된 main을 Jekyll 게시로 되돌리거나 생성 결과를 main에 강제 push하지 않습니다.
+실패한 출력을 강제 게시하지 않고 로그를 확인한 뒤 수정 PR을 검증·검토·병합합니다. 공개 Markdown의 URL·작성일을 유지하고 `updated`를 과거로 되돌리지 않습니다. 오래된 실행의 재실행 대신 최신 main에서 새 실행을 사용합니다. 배포 중단이나 설정 변경은 관리자가 별도로 판단합니다.
+
+과거 전환 순서와 장애별 복구 표는 [전환 이력](deployment-transition.md)에 보존했습니다. 당시 브랜치·PR·백업 정보는 실행 전 실제 존재와 상태를 확인해야 하며 현재 작업 지시로 사용하지 않습니다. Markdown이 포함된 main을 Jekyll 게시로 되돌리거나 생성 결과를 main에 강제 push하지 않습니다.
 
 공식 문서: [Pages 게시 소스](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [Actions 과금](https://docs.github.com/en/billing/concepts/product-billing/github-actions), [워크플로 트리거](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow).
