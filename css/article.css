@@ -148,9 +148,24 @@
 }
 
 .article-body {
+  min-width: 0;
   color: #212529;
   font-size: 1.06rem;
   line-height: 1.9;
+}
+
+/* Markdown images: preserve proportions without enlarging small originals. */
+.article-body img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 40rem);
+  height: auto;
+  margin-inline: auto;
+}
+
+/* Optional Markdown filename convention for a narrower vertical summary. */
+.article-body img[src$="-comic.webp"] {
+  max-width: min(100%, 30rem);
 }
 
 .article-body h2 {
