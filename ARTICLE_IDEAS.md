@@ -10,7 +10,7 @@
 - 비슷한 키워드를 페이지별로 쪼개 복붙하지 않습니다.
 - 각 아티클은 하나의 검색 의도에 집중합니다.
 - 무료체험은 운영하지 않으므로 무료체험 관련 표현은 사용하지 않습니다.
-- 어울리는 실제 사진 및 영상을 넣습니다.
+- 신규 글은 독창적인 생성 래스터 이미지를 사용합니다. 자세한 기준은 [원고·이미지 작성](docs/content-authoring.md)을 따릅니다.
 - 가격, 운영시간, 주차 여부는 확인 전까지 확정 표현을 피합니다.
 - 마지막에는 행신점/을지로점 문의로 자연스럽게 연결합니다.
 
@@ -161,8 +161,10 @@ CTA 방향:
 
 ### 6. 행신동 복싱장 찾을 때 확인해야 할 것들
 
-상태: 작성 예정  
-파일: articles/hangsin-boxing-gym-guide.html
+상태: 공개 원고 완료 (`draft: false`)
+원고: [content/articles/hangsin-boxing-gym-guide.md](content/articles/hangsin-boxing-gym-guide.md)
+공개 URL: /articles/hangsin-boxing-gym-guide.html
+작성일: 2026-10-14
 
 포함 키워드:
 - 행신 복싱장
@@ -243,8 +245,9 @@ CTA 방향:
 
 ### 11. 복싱장 처음 갈 때 무엇을 준비해야 할까?
 
-상태: 작성 예정  
-파일: articles/boxing-beginner-guide.html
+상태: 미작성 — 검증용 초안과 검색 의도 중복, 자동 선정 보류
+관련 초안: [boxing-first-class.md](content/articles/boxing-first-class.md) (`draft: true`, 공개 글 아님)
+파일명 후보: articles/boxing-beginner-guide.html
 
 포함 키워드:
 - 복싱 처음
@@ -295,3 +298,22 @@ CTA 방향:
 - articles/mitt-vs-heavybag.html
 - articles/boxing-beginner-guide.html
 - articles/boxing-fitness.html
+
+## 현재 주제 대장과 자동 선정 기준 (2026-10-16)
+
+실제 저장소 대조 기준이며 배포 성공 여부를 뜻하지 않습니다. 위 파일명 후보는 미작성 글의 실제 파일 링크가 아닙니다.
+
+| 주제/검색 의도 | 상태 | 실제 원본 |
+| --- | --- | --- |
+| 행신 다이어트 운동 선택 | 기존 HTML 완료 | [HTML](articles/hangsin-diet-workout.html) |
+| 을지로 퇴근 후 다이어트 | 기존 HTML 완료 | [HTML](articles/euljiro-diet-workout.html) |
+| 초보자 복싱 다이어트 입문 | 기존 HTML 완료 | [HTML](articles/boxing-diet-beginner.html) |
+| 스트레스 해소 운동 | 기존 HTML 완료 | [HTML](articles/stress-relief-boxing.html) |
+| 복싱 칼로리·운동 효율 | 기존 HTML 완료 | [HTML](articles/boxing-calorie-burn.html) |
+| 행신동 복싱장 선택 기준 | 공개 Markdown 완료 | [원고](content/articles/hangsin-boxing-gym-guide.md) |
+| 주 3일·금토일 주말 운동 | 공개 Markdown 완료, 기존 기획 외 추가 | [원고](content/articles/three-day-weekend-workout.md) |
+| 첫 수업 준비 | 검증용 초안, 자동 선정 보류 | [원고](content/articles/boxing-first-class.md) |
+
+미작성 후보는 7·8·9·10·12번입니다. 7·9번은 서로 겹치고 을지로 다이어트 글의 퇴근 후 루틴과도 인접합니다. 8번은 칼로리 글의 전신 운동 비교, 12번은 주 3일 글의 체력·운동량 설명과 겹칠 수 있습니다. 10번도 스트레스 글의 미트·샌드백 비교 범위를 먼저 확인합니다. 미작성 표시는 자동 작성 허가가 아니며 차별화할 질문과 기존 글에서 다루지 않은 범위를 정한 뒤 선정합니다.
+
+자동 선정 전에는 이 대장뿐 아니라 실제 HTML 5개와 모든 Markdown(초안 포함)의 제목·메타데이터·본문·관련 글을 재확인합니다. 신규 초안이 생기면 원본 경로·검색 의도·상태를 추가하고 공개 또는 보류 시 갱신합니다. 지역명이나 제목만 바꾼 중복 글은 생성하지 않습니다. 예전 기획의 시설·서비스 설명은 현재 사실의 근거로 사용하지 않습니다.

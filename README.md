@@ -1,15 +1,26 @@
-# redboxing-gym.github.io
+# 레드복싱 공식 웹사이트
 
-레드복싱 공식 정적 웹사이트입니다. 기존 공개 HTML과 SEO 자산을 보존하며 신규 원고의 Markdown 빌드와 PR 검증을 준비합니다.
+기존 공개 HTML을 보존하면서 신규 아티클을 Markdown으로 작성하는 GitHub Pages 정적 사이트입니다.
 
-- [Markdown 원고 작성](docs/content-authoring.md)
-- [빌드·검증·배포 전환](docs/publishing.md)
-- [외부 시스템 PR 연동](docs/external-pr-integration.md)
+현재 게시 소스는 **GitHub Actions**, 저장소 변수는 **`PAGES_ACTIONS_ENABLED=true`**입니다(2026-10-16 사용자 제공 운영 상태). 사람이 검토한 PR이 main에 병합되면 Pages 워크플로가 검증 후 `dist/`를 자동 배포합니다. PR 검증 자체는 배포하지 않습니다.
 
-현재 PR 단계에서는 배포 설정을 변경하지 않습니다. **Actions 전환 승인 전에는 콘텐츠 관리 구조 PR을 병합하지 않습니다.** 테스트 원고는 `draft: true`이며 빌드 결과에 HTML 파일이 생성되지 않습니다.
+- [Codex 프로젝트 지침](AGENTS.md)
+- [Markdown 원고·이미지 작성](docs/content-authoring.md)
+- [빌드·검증·현재 게시 운영](docs/publishing.md)
+- [외부 시스템·로컬 Codex CLI 제출](docs/external-pr-integration.md)
+- [아티클 기획·중복 확인](ARTICLE_IDEAS.md)
+- [검색 의도별 키워드](SEO_KEYWORDS.md)
+- [과거 수정 기록](ARTICLE_FIX_NOTES.md)
+- [과거 배포 전환 이력](docs/deployment-transition.md)
+
+Python 3.12 이상으로 로컬 검증합니다. 전체 절차는 게시 운영 문서를 따릅니다.
 
 ```powershell
 python -m pip install -r requirements-content.txt
+python scripts/check_changes.py
 python -m unittest discover -s tests -v
 python scripts/build.py
+python scripts/validate.py
 ```
+
+생성된 `dist/`는 커밋하지 않습니다. 신규 콘텐츠는 별도 브랜치와 Draft PR로 제출하고 사람이 검토·병합합니다. 검증용 `boxing-first-class.md`는 `draft: true`를 유지합니다.
