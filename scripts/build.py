@@ -55,7 +55,10 @@ def render_article_body(source, filename):
                 'referrerpolicy="strict-origin-when-cross-origin" '
                 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
                 'allowfullscreen></iframe></div>')
-    # Markdown wraps a standalone shortcode in <p>; replace the whole block.\n    html = re.sub(r'<p>\\s*(\\[\\[youtube:[A-Za-z0-9_-]{11}\\]\\])\\s*</p>',\n                  lambda m: embed(YOUTUBE_TOKEN.fullmatch(m.group(1))), html)\n    return html
+    # Replace a standalone shortcode paragraph with a valid block-level iframe.
+    html = re.sub(r'<p>\s*(\[\[youtube:[A-Za-z0-9_-]{11}\]\])\s*</p>',
+                  lambda m: embed(YOUTUBE_TOKEN.fullmatch(m.group(1))), html)
+    return html
 
 
 def load_articles(root):
