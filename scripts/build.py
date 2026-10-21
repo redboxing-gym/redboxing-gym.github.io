@@ -46,6 +46,11 @@ def render_article_body(source, filename):
     require(not re.search(r'<\s*/?\s*[A-Za-z!]', source), f'{filename}: raw HTML is not supported')
     require('[[youtube:' not in YOUTUBE_TOKEN.sub('', source),
             f'{filename}: invalid YouTube shortcode')
+    # A shortcode must occupy its own Markdown line; inline tokens would remain unrendered.
+    for line in source.splitlines():
+        if '[[youtube:' in line:
+            require(YOUTUBE_TOKEN.fullmatch(line.strip()) is not None,
+                    f'{filename}: YouTube shortcode must be on its own line')
     html = markdown.markdown(source, extensions=['tables', 'fenced_code', 'toc'])
     def embed(match):
         video_id = match.group(1)
