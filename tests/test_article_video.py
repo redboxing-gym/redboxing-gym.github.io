@@ -15,6 +15,14 @@ class ArticleVideoTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             render_article_body('[[youtube:invalid]]', 'test.md')
 
+    def test_inline_shortcode_rejected(self):
+        with self.assertRaises(ValueError):
+            render_article_body('영상 보기 [[youtube:abcdefghijk]]', 'test.md')
+
+    def test_multiple_standalone_shortcodes(self):
+        html = render_article_body('[[youtube:abcdefghijk]]\n\n[[youtube:12345678901]]', 'test.md')
+        self.assertEqual(html.count('class="article-video"'), 2)
+
     def test_raw_html_rejected(self):
         with self.assertRaises(ValueError):
             render_article_body('<iframe src="https://example.com"></iframe>', 'test.md')
