@@ -38,12 +38,12 @@ def unique_mapping(loader, node):
 UniqueLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, unique_mapping)
 
 
-YOUTUBE_TOKEN = re.compile(r'\\[\\[youtube:([A-Za-z0-9_-]{11})\\]\\]')
+YOUTUBE_TOKEN = re.compile(r'\[\[youtube:([A-Za-z0-9_-]{11})\]\]')
 
 
 def render_article_body(source, filename):
     # No arbitrary HTML in Markdown; only validated YouTube video identifiers.
-    require(not re.search(r'<\\s*/?\\s*[A-Za-z!]', source), f'{filename}: raw HTML is not supported')
+    require(not re.search(r'<\s*/?\s*[A-Za-z!]', source), f'{filename}: raw HTML is not supported')
     require('[[youtube:' not in YOUTUBE_TOKEN.sub('', source),
             f'{filename}: invalid YouTube shortcode')
     html = markdown.markdown(source, extensions=['tables', 'fenced_code', 'toc'])
