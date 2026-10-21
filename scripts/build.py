@@ -38,6 +38,26 @@ def unique_mapping(loader, node):
 UniqueLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, unique_mapping)
 
 
+YOUTUBE_TOKEN = re.compile(r'\\[\\[youtube:([A-Za-z0-9_-]{11})\\]\\]')
+
+
+def render_article_body(source, filename):
+    # No arbitrary HTML in Markdown; only validated YouTube video identifiers.
+    require(not re.search(r'<\\s*/?\\s*[A-Za-z!]', source), f'{filename}: raw HTML is not supported')
+    require('[[youtube:' not in YOUTUBE_TOKEN.sub('', source),
+            f'{filename}: invalid YouTube shortcode')
+    html = markdown.markdown(source, extensions=['tables', 'fenced_code', 'toc'])
+    def embed(match):
+        video_id = match.group(1)
+        return ('<div class="article-video"><iframe '
+                'src="https://www.youtube-nocookie.com/embed/' + video_id + '" '
+                'title="공식 경기 영상" loading="lazy" '
+                'referrerpolicy="strict-origin-when-cross-origin" '
+                'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                'allowfullscreen></iframe></div>')
+    return YOUTUBE_TOKEN.sub(embed, html)
+
+
 def load_articles(root):
     manifest = json.loads((root / 'content/legacy-articles.json').read_text(encoding='utf-8'))
     for path, digest in manifest['protected'].items():
@@ -86,7 +106,7 @@ def load_articles(root):
         require(not re.search(r'<\s*/?\s*[A-Za-z!]', match[2]), f'{path.name}: raw HTML is not supported')
         require(not re.search(r'^#\s', match[2], re.M), f'{path.name}: use H2 or lower')
         require(match[2].strip(), f'{path.name}: empty body')
-        meta['body'] = markdown.markdown(match[2], extensions=['tables', 'fenced_code', 'toc'])
+        meta['body'] = render_article_body(match[2], path.name)
         articles.append(meta)
     return manifest, legacy, articles
 
