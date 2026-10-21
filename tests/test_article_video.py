@@ -8,7 +8,7 @@ class ArticleVideoTests(unittest.TestCase):
         html = render_article_body('## 영상\n\n[[youtube:abcdefghijk]]', 'test.md')
         self.assertIn('https://www.youtube-nocookie.com/embed/abcdefghijk', html)
         self.assertIn('class="article-video"', html)
-        self.assertIn('<h2>', html)
+        self.assertIn('<h2 ', html)\n        self.assertNotIn('<p><div', html)
 
     def test_invalid_video_id(self):
         with self.assertRaises(ValueError):
