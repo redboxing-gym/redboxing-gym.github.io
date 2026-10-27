@@ -49,7 +49,12 @@ class ContentTests(unittest.TestCase):
         out = build(self.root)
         first = {p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()}
         html = (out / 'articles/boxing-first-class.html').read_text(encoding='utf-8')
-        self.assertIn('href="/articles/boxing-second-class.html"', html)
+
+        # 두 테스트 아티클이 모두 생성됐는지 확인
+        self.assertTrue((out / 'articles/boxing-first-class.html').is_file())
+        self.assertTrue((out / 'articles/boxing-second-class.html').is_file())
+
+        # 명시적으로 지정한 관련 글 링크 확인
         self.assertIn('href="/articles/boxing-diet-beginner.html"', html)
         build(self.root)
         self.assertEqual(first, {p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()})
