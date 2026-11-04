@@ -21,7 +21,7 @@ draft: false
 
 처음에는 코치와 시작 신호를 맞추고, 하나의 표적을 정확하게 친 뒤 가드로 돌아오는 것부터 익히면 됩니다.
 
-![시작 신호를 묻고, 준비를 기다리고, 약속한 신호에 치고, 놓치면 멈춰 다시 확인하는 네 단계](/assets/img/boxing-mitt-start-signal-comic.webp)
+![미트에 잽을 한 번 치고 가드로 돌아온 뒤, 원투를 연결하고 짧은 스텝으로 거리를 맞춰 다시 잽을 치는 네컷 만화](/assets/img/boxing-mitt-start-signal-comic.webp)
 
 ## 미트가 보인다고 무조건 치는 것은 아닙니다
 
