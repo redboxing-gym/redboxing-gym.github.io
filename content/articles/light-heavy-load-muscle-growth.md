@@ -11,7 +11,7 @@ kicker: "운동과학"
 lead: "덤벨의 숫자만으로 근육에 주는 자극을 판단하기는 어렵습니다. 무게와 세트의 힘든 정도, 운동 목표를 함께 살펴봅니다."
 hero_image: "/assets/img/light-heavy-load-muscle-growth-hero.webp"
 hero_alt: "같은 운동을 서로 다른 크기의 덤벨로 수행하며 저항을 비교하는 두 성인"
-tags: ["운동과학", "근력운동"]
+tags: ["근력운동", "근비대"]
 related: []
 draft: false
 ---

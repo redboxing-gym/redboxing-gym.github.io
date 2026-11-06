@@ -18,9 +18,7 @@
       "kicker": "행신동 다이어트 운동",
       "hero_image": "/assets/img/gym.webp",
       "hero_alt": "행신동 다이어트 운동을 위한 레드복싱 운동 공간",
-      "tags": [
-        "복싱"
-      ]
+      "tags": ["초보자", "다이어트", "운동 습관"]
     },
     {
       "url": "/articles/euljiro-diet-workout.html",
@@ -30,9 +28,7 @@
       "kicker": "을지로 다이어트 운동",
       "hero_image": "/assets/img/stress.webp",
       "hero_alt": "을지로 다이어트 운동과 퇴근 후 복싱 루틴",
-      "tags": [
-        "복싱"
-      ]
+      "tags": ["다이어트", "운동 습관"]
     },
     {
       "url": "/articles/boxing-diet-beginner.html",
@@ -42,9 +38,7 @@
       "kicker": "초보 복싱 다이어트",
       "hero_image": "/assets/img/private.webp",
       "hero_alt": "초보자 복싱 입문과 복싱 다이어트 코칭",
-      "tags": [
-        "복싱"
-      ]
+      "tags": ["초보자", "다이어트"]
     },
     {
       "url": "/articles/boxing-calorie-burn.html",
@@ -54,9 +48,7 @@
       "kicker": "복싱 칼로리 소모",
       "hero_image": "/assets/img/boxing-calorie-hero.webp",
       "hero_alt": "복싱 칼로리 소모와 다이어트 운동 비교를 표현한 복싱 훈련 이미지",
-      "tags": [
-        "복싱"
-      ]
+      "tags": ["다이어트", "칼로리 소모"]
     },
     {
       "url": "/articles/stress-relief-boxing.html",
@@ -66,9 +58,7 @@
       "kicker": "스트레스 해소 복싱",
       "hero_image": "/assets/img/freetime.webp",
       "hero_alt": "스트레스 해소 운동으로 복싱을 하는 공간",
-      "tags": [
-        "복싱"
-      ]
+      "tags": ["스트레스 해소", "샌드백", "미트 훈련"]
     }
   ]
 }

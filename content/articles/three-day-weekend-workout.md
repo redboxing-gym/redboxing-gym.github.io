@@ -16,7 +16,7 @@ kicker: "주말 운동 루틴"
 lead: "운동은 매일 해야만 효과가 있을까요? 중요한 건 일주일에 며칠 나오는지가 아니라, 자신에게 맞는 운동량을 꾸준히 확보하는 것입니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "레드복싱 행신점의 자유 운동 공간"
-tags: ["복싱", "운동 프로그램"]
+tags: ["근력운동", "운동 일정", "운동 회복"]
 related:
   - "/articles/hangsin-diet-workout.html"
   - "/articles/boxing-diet-beginner.html"

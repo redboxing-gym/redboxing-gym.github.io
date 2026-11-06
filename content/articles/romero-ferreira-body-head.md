@@ -11,7 +11,7 @@ kicker: "경기로 배우는 복싱"
 lead: "몸통을 공격한 뒤 머리를 노리는 이유는 무엇일까요? 로메로의 1라운드 승부에서 펀치의 높낮이와 상대의 방어 반응을 읽어 봅니다."
 hero_image: "/assets/img/romero-ferreira-body-head-hero.webp"
 hero_alt: "링에서 몸통 높이로 펀치를 뻗는 선수와 머리를 지키는 상대를 그린 복싱 삽화"
-tags: ["복싱", "경기 리뷰"]
+tags: ["경기 분석", "바디샷", "콤비네이션"]
 draft: false
 ---
 

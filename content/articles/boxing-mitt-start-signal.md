@@ -11,7 +11,7 @@ kicker: "생활체육 복싱 입문"
 lead: "코치가 미트를 보여주는 순간은 단순한 출발 신호가 아닙니다. 표적을 읽고, 거리를 맞추고, 펀치를 낸 뒤 자세를 되찾는 연습의 시작입니다."
 hero_image: "/assets/img/boxing-mitt-start-signal-hero.webp"
 hero_alt: "글러브를 낀 초보자가 펀치를 멈춘 채 미트를 든 코치와 시작 신호를 확인하는 모습"
-tags: ["초보자", "복싱"]
+tags: ["초보자", "미트 훈련", "거리 조절"]
 related: ["/articles/boxing-combination-memory.html"]
 draft: false
 ---

@@ -11,7 +11,7 @@ kicker: "쉽게 읽는 운동과학"
 lead: "같은 무게로 10번을 해도 내리는 속도를 늦추면 한 세트가 더 길어집니다. 그 차이가 근육 성장에 어떤 의미인지 살펴봅니다."
 hero_image: "/assets/img/resistance-training-repetition-tempo-hero.webp"
 hero_alt: "다리 운동 기구에서 무게를 조절하며 움직이는 사람과 근육 섬유, 시계를 함께 표현한 삽화"
-tags: ["운동과학", "근력"]
+tags: ["근력운동", "근비대", "반복 속도"]
 draft: false
 ---
 

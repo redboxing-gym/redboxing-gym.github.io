@@ -11,7 +11,7 @@ kicker: "운동과학"
 lead: "땀을 만드는 과정과 땀이 열을 가져가는 과정은 다릅니다. 습도와 공기 흐름을 함께 보면 운동 중 더위를 이해하기 쉽습니다."
 hero_image: "/assets/img/sweat-evaporation-exercise-cooling-hero.webp"
 hero_alt: "복싱 연습을 쉬는 사람의 팔에서 땀방울이 증발하며 열을 내보내는 과정을 보여 주는 그림"
-tags: ["복싱", "운동과학", "초보자"]
+tags: ["초보자", "체온 조절"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

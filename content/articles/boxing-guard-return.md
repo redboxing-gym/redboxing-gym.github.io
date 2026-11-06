@@ -15,7 +15,7 @@ kicker: "복싱 기술과 교정"
 lead: "펀치는 뻗는 동작만큼 회수도 중요합니다. 주먹을 충분히 뻗으면서도 빠르게 가드로 되돌리는 방법을 익혀 보세요."
 hero_image: "/assets/img/boxing-guard-return-hero.webp"
 hero_alt: "거울 앞에서 펀치 뒤 가드 위치를 확인하는 복싱 초보자"
-tags: ["복싱", "초보자", "복싱 기술"]
+tags: ["초보자", "방어", "가드", "펀치 회수"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: false

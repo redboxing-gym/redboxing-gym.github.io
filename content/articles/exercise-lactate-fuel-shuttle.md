@@ -11,7 +11,7 @@ kicker: "운동과학"
 lead: "젖산은 운동이 끝날 때까지 쌓여 있기만 하지 않습니다. 만들어지는 동안에도 이동하고, 다른 조직의 에너지 공급에 쓰입니다."
 hero_image: "/assets/img/exercise-lactate-fuel-shuttle-hero.webp"
 hero_alt: "운동하는 사람을 중심으로 근육에서 나온 젖산이 다른 근육과 심장에 전달되는 경로를 보여 주는 그림"
-tags: ["운동과학", "복싱"]
+tags: ["젖산", "에너지 대사"]
 related: ["/articles/boxing-breathing-basics.html"]
 draft: false
 ---

@@ -50,6 +50,20 @@ class TagLocalizationTests(unittest.TestCase):
                               + '---\n' + body, encoding='utf-8')
         load_articles(self.root)
 
+    def test_recommended_tag_count_is_not_a_validation_limit(self):
+        _, front, body = self.draft.read_text(encoding='utf-8').split('---', 2)
+        meta = yaml.safe_load(front)
+        for tags in [['새 관심사'], ['새 관심사', '균형', '리듬', '거리', '집중']]:
+            with self.subTest(tags=tags):
+                meta['tags'] = tags
+                self.draft.write_text(
+                    '---\n' + yaml.safe_dump(meta, allow_unicode=True) + '---\n' + body,
+                    encoding='utf-8')
+                _, _, articles = load_articles(self.root)
+                actual = next(a for a in articles if a['slug'] == meta['slug'])
+                self.assertEqual(actual['tags'], tags)
+                self.assertTrue(actual['draft'])
+
     def test_korean_tag_matching_keeps_explicit_then_overlap_order(self):
         _, front, body = self.draft.read_text(encoding='utf-8').split('---', 2)
         base = yaml.safe_load(front)

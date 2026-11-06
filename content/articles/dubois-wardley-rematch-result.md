@@ -11,7 +11,7 @@ kicker: "복싱 경기 돌아보기"
 lead: "첫 대결은 11라운드, 재대결은 2라운드. 같은 두 선수가 만났지만 출발부터 다른 경기였습니다."
 hero_image: "/assets/img/dubois-wardley-rematch-result-hero.webp"
 hero_alt: "링 코너에서 트레이너가 흰 수건을 들고 심판이 중단 신호를 보내는 설명용 복싱 삽화"
-tags: ["복싱", "경기 리뷰"]
+tags: ["경기 분석", "잽", "콤비네이션"]
 draft: false
 ---
 

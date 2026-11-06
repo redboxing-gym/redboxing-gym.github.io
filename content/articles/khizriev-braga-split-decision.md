@@ -11,7 +11,7 @@ kicker: "격투 스포츠 경기 돌아보기"
 lead: "두 차례 다운을 만들고도 승리하지 못한 브라가. 강한 오른손과 위기 이후의 잽, 공격 후 균형을 복싱 기본기 관점에서 읽어봅니다."
 hero_image: "/assets/img/khizriev-braga-split-decision-hero.webp"
 hero_alt: "케이지 안에서 가상의 종합격투기 선수 두 명이 직선 펀치와 가드로 공방하는 설명용 삽화"
-tags: ["종합격투기", "리뷰"]
+tags: ["경기 분석", "종합격투기", "잽", "거리 조절"]
 draft: false
 ---
 

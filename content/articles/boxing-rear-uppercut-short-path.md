@@ -11,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "어퍼컷은 주먹을 크게 퍼 올리는 펀치가 아닙니다. 가드를 지나치게 열지 않고, 하체의 힘을 짧은 상승 타격으로 연결하는 방법을 알아봅니다."
 hero_image: "/assets/img/boxing-rear-uppercut-short-path-hero.webp"
 hero_alt: "왼손 가드를 유지하며 굽힌 오른팔로 짧은 뒷손 어퍼컷을 연습하는 성인 복서"
-tags: ["복싱", "초보자", "복싱 기술"]
+tags: ["초보자", "어퍼컷"]
 related: ["/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

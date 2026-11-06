@@ -11,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "섀도복싱에서도 펀치는 충분히 뻗어야 합니다. 다만 마지막 순간 팔꿈치를 세게 펴서 멈추는 습관은 주의해야 합니다."
 hero_image: "/assets/img/boxing-shadow-punch-endpoint-hero.webp"
 hero_alt: "옆모습의 성인 수련자가 팔꿈치를 뒤로 꺾지 않고 공중으로 잽을 뻗는 모습"
-tags: ["복싱", "초보자", "복싱 기술"]
+tags: ["초보자", "섀도복싱", "펀치 회수"]
 related: ["/articles/boxing-mirror-gaze.html", "/articles/boxing-breathing-basics.html"]
 draft: false
 ---

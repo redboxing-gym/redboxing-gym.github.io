@@ -11,7 +11,7 @@ kicker: "쉽게 풀어 보는 운동과학"
 lead: "무게는 그대로인데 힘든 구간은 달라집니다. 팔꿈치를 중심으로 덤벨과 근육이 만드는 회전의 원리를 살펴봅니다."
 hero_image: "/assets/img/dumbbell-curl-angle-torque-hero.webp"
 hero_alt: "위팔을 몸 옆에 둔 사람이 덤벨 컬을 하며 아래팔이 수평인 구간을 지나는 옆모습"
-tags: ["운동과학", "근력"]
+tags: ["근력운동", "관절 토크"]
 draft: false
 ---
 

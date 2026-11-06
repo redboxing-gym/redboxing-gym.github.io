@@ -11,7 +11,7 @@ kicker: "처음 배우는 복싱"
 lead: "거울 속 손을 쫓느라 고개가 돌아간다면, 먼저 앞을 볼 기준을 정해 보세요."
 hero_image: "/assets/img/boxing-mirror-gaze-hero.webp"
 hero_alt: "거울과 충분히 떨어져 거울 속 자신의 얼굴 쪽을 바라보며 복싱 자세를 잡은 초보자"
-tags: ["복싱", "초보자"]
+tags: ["초보자", "섀도복싱", "시선"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

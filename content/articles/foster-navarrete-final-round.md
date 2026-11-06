@@ -11,7 +11,7 @@ kicker: "복싱 경기 돌아보기"
 lead: "나바레테가 전진할수록 포스터의 오른손은 더 위협적이었습니다. 두 차례 다운을 만든 카운터 타이밍과 거리 조절을 살펴봅니다."
 hero_image: "/assets/img/foster-navarrete-final-round-hero.webp"
 hero_alt: "가상의 복서가 링 바닥에 한쪽 무릎을 댄 채 심판의 카운트를 받고 상대는 코너에서 기다리는 설명 삽화"
-tags: ["복싱", "리뷰"]
+tags: ["경기 분석", "카운터", "거리 조절"]
 draft: false
 ---
 

@@ -16,7 +16,7 @@ kicker: "줄넘기 기초"
 lead: "줄넘기가 자꾸 걸린다면 더 높이 뛰거나 빠르게 돌리기보다 줄 길이, 손의 위치, 점프 리듬부터 차례로 확인해 보세요."
 hero_image: "/assets/img/boxing-jump-rope-troubleshooting-hero.webp"
 hero_alt: "복싱장에서 줄넘기를 낮고 가볍게 넘는 초보자"
-tags: ["복싱", "초보자"]
+tags: ["초보자", "줄넘기"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: false

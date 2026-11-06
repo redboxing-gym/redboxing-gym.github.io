@@ -11,7 +11,7 @@ kicker: "운동과학"
 lead: "샌드백을 치고 나면 평소 무게도 버겁게 느껴질 수 있습니다. 그날의 피로와 장기적인 근육 성장을 구분하고, 두 운동의 순서를 정하는 기준을 알아봅니다."
 hero_image: "/assets/img/boxing-strength-concurrent-training-hero.webp"
 hero_alt: "샌드백과 덤벨 사이에서 두 운동의 배치를 생각하는 생활체육 운동인"
-tags: ["복싱", "운동과학", "근력"]
+tags: ["근력운동", "근비대", "운동 회복"]
 related: ["/articles/three-day-weekend-workout.html"]
 draft: false
 ---

@@ -11,7 +11,7 @@ kicker: "경기로 배우는 복싱"
 lead: "4라운드에는 거리를 벌려 대응한 칸젤로시가, 5라운드에는 다시 밀고 들어온 오수나가 돋보였습니다. 공격과 반격을 연습할 때 무엇을 봐야 할까요?"
 hero_image: "/assets/img/osuna-cangelosi-fifth-round-response-hero.webp"
 hero_alt: "링에서 한 손을 뻗어 공격하는 가상의 복서와 두 글러브로 얼굴을 방어하는 상대의 삽화"
-tags: ["복싱", "리뷰"]
+tags: ["경기 분석", "카운터", "거리 조절", "콤비네이션"]
 draft: false
 ---
 

@@ -11,7 +11,7 @@ kicker: "복싱 입문 가이드"
 lead: "세게 치는 것보다 먼저, 펀치와 호흡을 함께 이어 가는 감각을 익혀 보세요."
 hero_image: "/assets/img/boxing-breathing-basics-hero.webp"
 hero_alt: "밝은 복싱 연습 공간에서 샌드백에 가볍게 잽을 뻗는 초보자"
-tags: ["초보자", "복싱", "복싱 기술"]
+tags: ["초보자", "호흡", "잽", "콤비네이션"]
 related: ["/articles/boxing-diet-beginner.html", "/articles/hangsin-boxing-gym-guide.html"]
 draft: false
 ---

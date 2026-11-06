@@ -13,7 +13,7 @@ kicker: "복싱 입문 가이드"
 lead: "첫 수업을 준비하며 확인할 사항을 정리합니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "레드복싱 운동 공간"
-tags: ["초보자", "복싱"]
+tags: ["초보자", "수업 준비"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: true

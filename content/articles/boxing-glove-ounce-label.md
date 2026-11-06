@@ -11,7 +11,7 @@ kicker: "복싱 장비 가이드"
 lead: "몇 온스를 살지 고민하기 전에 샌드백 연습용인지 스파링용인지부터 구분해 보세요. 온스는 무게, 용도는 글러브의 설계를 알려 줍니다."
 hero_image: "/assets/img/boxing-glove-ounce-label-hero.webp"
 hero_alt: "글러브의 무게 표기와 손에 맞는 정도를 따로 확인하는 복싱 입문자"
-tags: ["복싱 장비"]
+tags: ["복싱 장비", "글러브"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---
