@@ -42,6 +42,19 @@ class HomeBuildTests(unittest.TestCase):
     # Share fixture setup without inheriting/rerunning the category test methods.
     setUp = test_categories.CategoryTests.setUp
 
+    def test_guide_navigation_and_distinct_catalog_cta(self):
+        out = build(self.root)
+        home = (out / 'index.html').read_text(encoding='utf-8')
+        menu = home.split('<ul class="sidebar-nav">', 1)[1].split('</ul>', 1)[0]
+        links = re.findall(r'<a class="js-scroll-trigger" href="([^"]+)">([^<]+)</a>', menu)
+        self.assertEqual(links[3:6], [('#facility', '시설'), ('/#articles', '복싱 가이드'),
+                                     ('#price', '이용안내')])
+        self.assertIn('href="/articles/index.html">전체 아티클 보기', home)
+        for path in ['articles/index.html', 'articles/boxing-breathing-basics.html']:
+            html = (out / path).read_text(encoding='utf-8')
+            nav = html.split('<nav class="article-nav"', 1)[1].split('</nav>', 1)[0]
+            self.assertIn('href="/#articles">복싱 가이드', nav)
+
     def test_only_article_section_changes_and_samples_are_bounded(self):
         out = build(self.root)
         home = (out / 'index.html').read_text(encoding='utf-8')

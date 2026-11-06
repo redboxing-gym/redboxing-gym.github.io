@@ -209,6 +209,58 @@ class HomeArticleBrowserTests(unittest.TestCase):
                 .filter(c => c.getBoundingClientRect().width > 0).length === count''', arg=count)
             self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
 
+    def test_guide_menu_order_scroll_close_and_cross_page_navigation(self):
+        for width in [360, 390, 1440]:
+            with self.subTest(width=width):
+                page = self.home(width, clock=False)
+                sidebar = page.locator('#sidebar-wrapper')
+                page.locator('.menu-toggle').click()
+                links = sidebar.locator('.sidebar-nav-item a')
+                self.assertEqual(links.all_text_contents()[3:6], ['시설', '복싱 가이드', '이용안내'])
+                guide = sidebar.get_by_role('link', name='복싱 가이드', exact=True)
+                self.assertEqual(guide.get_attribute('href'), '/#articles')
+                self.assertEqual(guide.get_attribute('class'), 'js-scroll-trigger')
+                page.wait_for_function("Math.abs(document.querySelector('#sidebar-wrapper').getBoundingClientRect().left - (innerWidth - 250)) < 1")
+                self.screenshot(page, f'guide-menu-{width}')
+                documents = []
+                page.on('request', lambda request: documents.append(request.url)
+                        if request.is_navigation_request() and request.frame == page.main_frame else None)
+                guide.click()
+                page.wait_for_url(self.url + '/#articles')
+                page.wait_for_function("Math.abs(document.querySelector('#articles').getBoundingClientRect().top) < 2")
+                self.assertNotIn('active', sidebar.get_attribute('class') or '')
+                self.assertNotIn('active', page.locator('.menu-toggle').get_attribute('class'))
+                page.wait_for_function("document.querySelector('#sidebar-wrapper').getBoundingClientRect().left >= innerWidth")
+                self.assertEqual(documents, [])  # Native same-document smooth anchor.
+                title = page.locator('#home-articles-title').bounding_box()
+                self.assertGreaterEqual(title['y'], 65)
+                self.assertLess(title['y'] + title['height'], 1000)
+                self.assertEqual(page.get_by_role('link', name='전체 아티클 보기').get_attribute('href'),
+                                 '/articles/index.html')
+                # Neighbouring existing menus keep their anchor and close behaviour.
+                for label, target in [('시설', '#facility'), ('이용안내', '#price')]:
+                    page.locator('.menu-toggle').click()
+                    link = sidebar.get_by_role('link', name=label, exact=True)
+                    self.assertEqual(link.get_attribute('href'), target)
+                    link.click()
+                    page.wait_for_function("id => Math.abs(document.querySelector(id).getBoundingClientRect().top) < 2",
+                                           arg=target)
+                    self.assertNotIn('active', sidebar.get_attribute('class') or '')
+                for path in ['/articles/index.html', '/articles/boxing-breathing-basics.html']:
+                    page.goto(self.url + path, wait_until='networkidle')
+                    page.locator('.article-nav').get_by_role('link', name='복싱 가이드', exact=True).click()
+                    page.wait_for_url(self.url + '/#articles')
+                    page.wait_for_load_state('networkidle')
+                    # Native cross-document anchors can settle a few pixels
+                    # differently after fonts/images load; require the complete
+                    # heading to be visible below the existing fixed menu.
+                    page.wait_for_function("""() => {
+                        const r = document.querySelector('#home-articles-title').getBoundingClientRect();
+                        return r.top >= 65 && r.bottom < innerHeight;
+                    }""")
+                    self.assertGreaterEqual(page.locator('#home-articles-title').bounding_box()['y'], 65)
+                    self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+
     def test_real_time_rotation_scroll_position_and_no_extra_requests(self):
         page = self.home(clock=False)
         page.locator('#home-articles-title').scroll_into_view_if_needed()
