@@ -11,7 +11,7 @@ kicker: "쉽게 읽는 운동과학"
 lead: "스트레칭 뒤 손끝이 더 멀리 닿는 데에는 조직의 저항과 당김을 느끼는 방식이 함께 관여합니다."
 hero_image: "/assets/img/stretching-range-of-motion-tolerance-hero.webp"
 hero_alt: "매트에서 다리 뒤쪽을 부드럽게 늘리는 사람과 근육 및 감각 신호를 표현한 삽화"
-tags: ["science", "beginner"]
+tags: ["과학", "초보자"]
 draft: false
 ---
 

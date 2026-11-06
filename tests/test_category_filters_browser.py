@@ -16,7 +16,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build import ROOT, build
+from build import ROOT, build, load_articles
 from categories import CATEGORIES
 
 
@@ -144,6 +144,47 @@ class CategoryFilterBrowserTests(unittest.TestCase):
                     measurements.append(dict(page=name, **values))
                     self.screenshot(page, f'{name}-{width}')
         print('CATEGORY_LAYOUT', json.dumps(measurements))
+
+    def test_localized_kickers_and_every_current_tag_fit(self):
+        _, legacy, articles = load_articles(self.root)
+        expected_tags = {tag for a in articles if not a['draft'] for tag in a['tags']}
+        seen_tags = set()
+        changed_kickers = ['boxing-breathing-basics', 'boxing-heavy-bag-distance',
+                           'hangsin-boxing-gym-guide', 'three-day-weekend-workout']
+        # Derive coverage from source data so a future Korean tag never needs
+        # adding to a frozen vocabulary or manually maintained sample list.
+        public = [a for a in articles if not a['draft']]
+        covered = {tag for a in public if a['slug'] in changed_kickers for tag in a['tags']}
+        uncovered = expected_tags - covered
+        remaining_tags = []
+        while uncovered:
+            article = max(public, key=lambda a: (len(set(a['tags']) & uncovered), a['slug']))
+            remaining_tags.append(article['slug'])
+            uncovered -= set(article['tags'])
+        for width in [360, 390, 1440]:
+            page = self.page(width=width)
+            for slug in changed_kickers + (remaining_tags if width == 390 else []):
+                with self.subTest(width=width, slug=slug):
+                    article = next(a for a in articles if a['slug'] == slug)
+                    page.goto(self.url + article['url'], wait_until='networkidle')
+                    self.assertEqual(page.locator('.article-kicker').inner_text(), article['kicker'])
+                    self.assertEqual(page.locator('.article-tags li').all_text_contents(), article['tags'])
+                    seen_tags.update(article['tags'])
+                    self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                    self.assertTrue(page.locator('.article-kicker').evaluate(
+                        '(k) => k.scrollWidth <= k.clientWidth'))
+                    for tag in page.locator('.article-tags li').all():
+                        bounds = tag.bounding_box()
+                        self.assertGreaterEqual(bounds['x'], 0)
+                        self.assertLessEqual(bounds['x'] + bounds['width'], width)
+                    if slug in changed_kickers:
+                        self.screenshot(page, f'localized-{slug}-{width}')
+            page.goto(self.url + '/articles/index.html', wait_until='networkidle')
+            labels = page.locator('.article-card-label').all_text_contents()
+            self.assertEqual(len(labels), len(legacy) + len([a for a in articles if not a['draft']]))
+            self.assertTrue(all(not any(c.isascii() and c.isalpha() for c in label) for label in labels))
+            self.assertEqual(page.locator('[data-category-filter] button').count(), 8)
+        self.assertEqual(seen_tags, expected_tags)
 
 
 if __name__ == '__main__':

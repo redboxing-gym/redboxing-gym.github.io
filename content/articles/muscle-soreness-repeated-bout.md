@@ -11,7 +11,7 @@ kicker: "몸으로 이해하는 운동과학"
 lead: "같은 운동을 몇 번 반복하면 다음 날 덜 뻐근해질 수 있습니다. 몸이 어떻게 적응하는지, 운동 기록은 무엇을 기준으로 볼지 알아봅니다."
 hero_image: "/assets/img/muscle-soreness-repeated-bout-hero.webp"
 hero_alt: "덤벨을 천천히 내리는 사람과 근섬유를 둘러싼 지지 조직을 함께 보여 주는 삽화"
-tags: ["exercise-science", "strength", "beginner"]
+tags: ["운동과학", "근력", "초보자"]
 draft: false
 ---
 

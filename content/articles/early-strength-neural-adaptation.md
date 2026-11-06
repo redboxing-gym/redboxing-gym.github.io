@@ -11,7 +11,7 @@ kicker: "쉽게 이해하는 운동과학"
 lead: "힘을 내는 능력은 근육의 크기와 근육을 움직이는 신경의 신호가 함께 만듭니다."
 hero_image: "/assets/img/early-strength-neural-adaptation-hero.webp"
 hero_alt: "덤벨을 드는 성인과 운동신경이 여러 근섬유에 연결되는 모습을 함께 보여 주는 삽화"
-tags: ["exercise-science", "strength", "beginner"]
+tags: ["운동과학", "근력", "초보자"]
 draft: false
 ---
 

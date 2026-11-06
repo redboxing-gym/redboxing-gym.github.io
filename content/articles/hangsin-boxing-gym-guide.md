@@ -12,13 +12,11 @@ keywords:
   - 복싱 초보
   - 레드복싱 행신점
 canonical: "https://redboxing-gym.github.io/articles/hangsin-boxing-gym-guide.html"
-kicker: "BEGINNER'S GUIDE"
+kicker: "복싱장 선택 가이드"
 lead: "복싱을 처음 시작한다면 장비나 운동 강도보다 자신에게 맞는 지도 방식과 꾸준히 다닐 수 있는 환경을 먼저 살펴보세요. 행신동에서 복싱장을 찾을 때 도움이 되는 일곱 가지 기준을 정리했습니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "복싱과 체력 운동을 할 수 있는 레드복싱 운동 공간"
-tags:
-  - boxing
-  - beginner
+tags: ["복싱", "초보자"]
 related:
   - "/articles/boxing-diet-beginner.html"
   - "/articles/three-day-weekend-workout.html"

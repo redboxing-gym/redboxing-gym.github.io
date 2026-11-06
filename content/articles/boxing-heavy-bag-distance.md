@@ -11,13 +11,11 @@ keywords:
   - 복싱 기초
   - 초보 복싱
 canonical: "https://redboxing-gym.github.io/articles/boxing-heavy-bag-distance.html"
-kicker: "BOXING BASICS"
+kicker: "복싱 기초"
 lead: "샌드백을 치다 보면 처음보다 몸이 가까워질 수 있습니다. 세게 치기보다 시작 위치와 돌아올 자리를 먼저 확인해 보세요."
 hero_image: "/assets/img/boxing-heavy-bag-distance-hero.webp"
 hero_alt: "샌드백 앞에서 앞손을 뻗어 거리를 확인하는 복싱 초보자"
-tags:
-  - boxing
-  - beginner
+tags: ["복싱", "초보자"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: false

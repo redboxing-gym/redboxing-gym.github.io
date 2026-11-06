@@ -11,7 +11,7 @@ kicker: "복싱 경기 돌아보기"
 lead: "전반에 앞선 선수에게도 후반은 새로운 시험이었습니다. 추격과 대응이 이어진 열 라운드를 돌아봅니다."
 hero_image: "/assets/img/resendiz-mazoudier-late-rally-hero.webp"
 hero_alt: "가상의 복서 두 명이 링에서 가드를 유지한 채 이동하며 거리를 조절하는 설명용 삽화"
-tags: ["boxing", "review"]
+tags: ["복싱", "리뷰"]
 draft: false
 ---
 

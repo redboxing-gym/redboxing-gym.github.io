@@ -11,7 +11,7 @@ kicker: "하나씩 배우는 복싱"
 lead: "여러 설명이 머릿속에 남았다면, 다음 동작에서 확인할 한 가지부터 정해 보세요."
 hero_image: "/assets/img/boxing-feedback-one-at-a-time-hero.webp"
 hero_alt: "복싱 연습을 잠시 멈추고 코치와 한 가지 교정 내용을 확인하는 초보자"
-tags: ["boxing", "beginner"]
+tags: ["복싱", "초보자"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

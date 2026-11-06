@@ -11,7 +11,7 @@ kicker: "복싱 수업 대화"
 lead: "스파링이 부담스럽다면 억지로 참여할 필요는 없습니다. 원하지 않을 때 어떻게 말하면 좋을지 알아보세요."
 hero_image: "/assets/img/boxing-sparring-participation-hero.webp"
 hero_alt: "복싱 수업 전 초보 수련생이 코치와 연습 참여 범위를 이야기하는 모습"
-tags: ["beginner", "boxing"]
+tags: ["초보자", "복싱"]
 draft: false
 ---
 

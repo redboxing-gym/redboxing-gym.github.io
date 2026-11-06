@@ -11,7 +11,7 @@ kicker: "복싱 기술 연습"
 lead: "위빙은 고개를 푹 숙이는 동작이 아닙니다. 상대를 보면서 무릎으로 높이를 낮추고, 훅 아래를 지나 다음 동작을 준비하는 방어입니다."
 hero_image: "/assets/img/boxing-weave-keep-opponent-in-view-hero.webp"
 hero_alt: "가드를 유지한 수련자가 무릎을 굽혀 높이를 낮추고 코치를 바라보며 위빙을 연습하는 모습"
-tags: ["beginner", "boxing", "defense"]
+tags: ["초보자", "복싱", "방어"]
 related: ["/articles/boxing-parry-small-movement.html"]
 draft: false
 ---

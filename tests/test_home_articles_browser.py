@@ -139,14 +139,20 @@ class HomeArticleBrowserTests(unittest.TestCase):
         page.clock.run_for(20000)
         self.assertEqual(tabs.first.get_attribute('aria-selected'), 'true')
         page.evaluate("window.dispatchEvent(new Event('focus'))")
+        page.evaluate("""() => {
+            window.motionUpdates = 0;
+            matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',
+                () => { window.motionUpdates += 1; });
+        }""")
         page.emulate_media(reduced_motion='reduce')
-        page.wait_for_function("matchMedia('(prefers-reduced-motion: reduce)').matches")
+        page.wait_for_function('window.motionUpdates === 1', polling=50)
         page.clock.run_for(20000)
         self.assertEqual(tabs.first.get_attribute('aria-selected'), 'true')
         page.emulate_media(reduced_motion='no-preference')
-        page.wait_for_function("!matchMedia('(prefers-reduced-motion: reduce)').matches")
-        # Chromium delivers the media-query change on the next rendering frame.
-        page.clock.run_for(100)
+        # Wait for Chromium to actually dispatch the native change event, after
+        # the app's earlier listener has reset its timer. A fixed frame delay
+        # races with media emulation while the JavaScript clock is paused.
+        page.wait_for_function('window.motionUpdates === 2', polling=50)
         page.clock.run_for(10000)
         self.assertEqual(tabs.nth(1).get_attribute('aria-selected'), 'true')
 

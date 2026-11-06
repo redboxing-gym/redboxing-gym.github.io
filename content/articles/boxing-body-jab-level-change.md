@@ -11,7 +11,7 @@ kicker: "복싱 기술 연습"
 lead: "바디 잽은 주먹만 아래로 내리면 되는 펀치가 아닙니다. 무릎을 이용해 높이를 낮추고, 균형과 가드를 유지하며 몸통을 공략하는 방법을 익혀 보세요."
 hero_image: "/assets/img/boxing-body-jab-level-change-hero.webp"
 hero_alt: "무릎을 굽혀 몸의 높이를 낮추고 몸통 높이의 가상 표적을 향해 앞손 잽을 연습하는 수련자"
-tags: ["boxing", "beginner", "technique"]
+tags: ["복싱", "초보자", "복싱 기술"]
 related: ["/articles/boxing-heavy-bag-distance.html"]
 draft: false
 ---

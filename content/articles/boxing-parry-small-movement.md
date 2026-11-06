@@ -11,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "상대 주먹을 멀리 밀어내려다 손이 크게 벌어지나요? 패링의 목적과 손이 움직일 범위를 나눠 살펴봅니다."
 hero_image: "/assets/img/boxing-parry-small-movement-hero.webp"
 hero_alt: "가드 가까이에서 오른쪽 글러브로 직선 펀치를 작게 비켜 내는 동작을 배우는 두 성인 복서"
-tags: ["boxing", "beginner", "technique"]
+tags: ["복싱", "초보자", "복싱 기술"]
 related: ["/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

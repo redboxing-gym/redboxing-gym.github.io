@@ -11,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "좋은 잽은 주먹을 뒤로 당겨 힘을 모으기보다 가드에서 곧바로 출발합니다. 상대에게 공격을 미리 알리는 습관부터 줄여 보세요."
 hero_image: "/assets/img/boxing-jab-without-pullback-hero.webp"
 hero_alt: "앞손을 가드에서 목표 방향으로 곧장 뻗으며 잽의 출발을 연습하는 성인 수련자"
-tags: ["boxing", "beginner", "technique"]
+tags: ["복싱", "초보자", "복싱 기술"]
 related: ["/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

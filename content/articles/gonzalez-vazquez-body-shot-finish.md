@@ -11,7 +11,7 @@ kicker: "복싱 경기 돌아보기"
 lead: "바스케스가 먼저 압박했지만, 곤살레스는 상대 공격 사이의 빈틈을 찾아 반격했습니다. 오른손 카운터에서 왼손 바디샷까지 이어진 흐름을 살펴봅니다."
 hero_image: "/assets/img/gonzalez-vazquez-body-shot-finish-hero.webp"
 hero_alt: "링 중앙에서 가상의 복서가 상대의 벨트 위 몸통을 짧게 공격하는 설명용 삽화"
-tags: ["boxing", "fight-review"]
+tags: ["복싱", "경기 리뷰"]
 draft: false
 ---
 

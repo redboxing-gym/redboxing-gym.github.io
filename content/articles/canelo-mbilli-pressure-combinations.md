@@ -11,7 +11,7 @@ kicker: "복싱 경기 리뷰"
 lead: "앞으로 밀어붙이는 음빌리와 정확한 반격으로 대응하는 카넬로. 승부를 바꾼 것은 펀치의 양보다 압박 속에서 만드는 타격 거리와 타이밍이었습니다."
 hero_image: "/assets/img/canelo-mbilli-pressure-combinations-hero.webp"
 hero_alt: "링에서 가드를 올리고 접근하는 가상의 복서와 짧은 펀치를 준비하는 상대를 그린 삽화"
-tags: ["boxing", "fight-review"]
+tags: ["복싱", "경기 리뷰"]
 draft: false
 ---
 

@@ -11,7 +11,7 @@ kicker: "운동과학 쉽게 읽기"
 lead: "쉬는 동안에도 근육은 다음 움직임을 준비합니다. 다시 힘을 내는 과정과 휴식시간을 정하는 기준을 알아봅니다."
 hero_image: "/assets/img/rest-between-sets-energy-recovery-hero.webp"
 hero_alt: "덤벨 운동 사이에 쉬는 사람과 근육의 에너지 재충전 과정을 나란히 보여 주는 삽화"
-tags: ["exercise-science", "workout", "boxing"]
+tags: ["운동과학", "운동 프로그램", "복싱"]
 draft: false
 ---
 

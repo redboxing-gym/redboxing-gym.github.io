@@ -9,13 +9,11 @@ keywords:
   - 초보 복싱
   - 복싱 입문
 canonical: "https://redboxing-gym.github.io/articles/boxing-first-class.html"
-kicker: "BEGINNER BOXING"
+kicker: "복싱 입문 가이드"
 lead: "첫 수업을 준비하며 확인할 사항을 정리합니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "레드복싱 운동 공간"
-tags:
-  - beginner
-  - boxing
+tags: ["초보자", "복싱"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: true

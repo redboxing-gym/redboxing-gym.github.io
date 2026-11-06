@@ -15,9 +15,7 @@ kicker: "복싱 기술과 교정"
 lead: "오른손잡이는 보통 왼발을, 왼손잡이는 오른발을 앞에 둡니다. 앞발을 정하는 이유부터 발 간격과 균형까지 차근차근 알아보세요."
 hero_image: "/assets/img/boxing-stance-front-foot-hero.webp"
 hero_alt: "복싱 체육관에서 초보자의 발 위치를 안내하는 코치"
-tags:
-  - boxing
-  - beginner
+tags: ["복싱", "초보자"]
 draft: false
 ---
 
