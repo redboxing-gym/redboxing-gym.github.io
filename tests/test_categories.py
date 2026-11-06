@@ -10,7 +10,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build import ROOT, build, load_articles
+from build import ROOT, build, home_article_groups, load_articles
 from categories import CATEGORIES
 
 
@@ -75,7 +75,8 @@ class CategoryTests(unittest.TestCase):
         home = (out / 'index.html').read_text(encoding='utf-8')
         listing = (out / 'articles/index.html').read_text(encoding='utf-8')
         self.assertEqual(listing.count('data-article-card'), len(legacy) + len(public))
-        self.assertEqual(home.count('class="article-category"'), len(legacy) + len(public))
+        selected = sum(len(group['articles']) for group in home_article_groups(legacy + public))
+        self.assertEqual(home.count('class="article-category"'), selected)
         self.assertEqual(re.findall(r'<button[^>]+data-category="([^"]+)"', listing),
                          ['all', *CATEGORIES])
         self.assertIn('data-category-filter hidden', listing)

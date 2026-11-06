@@ -82,6 +82,87 @@
   background: #fff;
 }
 
+/* The homepage samples categories; card geometry still uses the shared rules. */
+.home-articles {
+  overflow-anchor: none;
+}
+
+.home-articles-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-articles-controls[hidden] {
+  display: none;
+}
+
+.home-articles-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.home-articles-controls button {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  color: var(--redboxing-dark);
+  background: #fff;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.home-articles-tabs button[aria-selected="true"] {
+  border-color: var(--redboxing-red);
+  color: #fff;
+  background: var(--redboxing-red);
+}
+
+.home-articles-controls button:focus-visible {
+  outline: 3px solid var(--redboxing-dark);
+  outline-offset: 3px;
+}
+
+.home-articles-arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.home-articles-stage {
+  display: grid;
+  touch-action: pan-y pinch-zoom;
+}
+
+[data-home-panel] {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.home-articles-measuring [data-home-panel] {
+  display: block !important;
+  visibility: hidden;
+}
+
+@media (max-width: 991.98px) {
+  .home-articles [data-article-card]:nth-child(n + 3) {
+    display: none;
+  }
+
+  .home-articles-controls {
+    flex-wrap: wrap;
+  }
+
+  .home-articles-tabs {
+    flex-basis: 100%;
+  }
+}
+
 .article-card {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);

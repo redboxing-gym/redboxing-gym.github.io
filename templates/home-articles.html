@@ -1,0 +1,27 @@
+<section class="content-section article-list-section home-articles" id="articles" data-home-articles aria-labelledby="home-articles-title">
+    <div class="container px-4 px-lg-5">
+        <div class="content-section-heading text-center">
+            <h3 class="text-secondary mb-0">GUIDE</h3>
+            <h2 class="mb-5" id="home-articles-title">운동 고민별 읽을거리</h2>
+        </div>
+{% if groups %}        <div class="home-articles-controls" data-home-controls hidden>
+            <div class="home-articles-tabs" role="tablist" aria-label="아티클 카테고리">
+{% for group in groups %}                <button type="button" role="tab" id="home-tab-{{ group.id }}" aria-controls="home-panel-{{ group.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ '0' if loop.first else '-1' }}">{{ group.label }}</button>
+{% endfor %}            </div>
+            <div class="home-articles-arrows" aria-label="카테고리 전환">
+                <button type="button" data-home-prev aria-label="이전 카테고리">←</button>
+                <button type="button" data-home-next aria-label="다음 카테고리">→</button>
+            </div>
+        </div>
+        <div class="home-articles-stage" data-home-stage aria-live="off">
+{% for group in groups %}            <div role="tabpanel" id="home-panel-{{ group.id }}" aria-labelledby="home-tab-{{ group.id }}" data-home-panel{% if not loop.first %} hidden{% endif %}>
+                <div class="row gx-4 gy-4 justify-content-center">
+{% for a in group.articles %}{% include 'article-card.html' %}{% endfor %}                </div>
+            </div>
+{% endfor %}        </div>
+{% endif %}        <div class="text-center mt-4">
+            <a class="btn btn-primary" href="/articles/index.html">전체 아티클 보기</a>
+        </div>
+    </div>
+    <script src="/js/home-articles.js" defer></script>
+</section>

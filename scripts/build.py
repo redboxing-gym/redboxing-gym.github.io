@@ -5,7 +5,6 @@ import re
 import shutil
 import sys
 from datetime import date
-from html import escape
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
@@ -34,6 +33,17 @@ def set_category_label(article, filename):
     require(isinstance(category, str) and category in CATEGORIES,
             f'{filename}: invalid category')
     article['category_label'] = CATEGORIES[category]
+
+
+def home_article_groups(catalog):
+    """Bounded homepage selection; the complete catalog stays on the list page."""
+    groups = []
+    for category, label in CATEGORIES.items():
+        items = sorted((a for a in catalog if a['category'] == category and not a.get('draft', False)),
+                       key=lambda a: (a['published'], a['url']), reverse=True)[:4]
+        if items:
+            groups.append({'id': category, 'label': label, 'articles': items})
+    return groups
 
 
 class UniqueLoader(yaml.SafeLoader):
@@ -89,6 +99,12 @@ def load_articles(root):
     legacy = manifest['articles']
     for article in legacy:
         set_category_label(article, article['url'])
+        # Read the immutable original date rather than inventing a legacy date.
+        original = (root / article['url'].lstrip('/')).read_text(encoding='utf-8')
+        dates = re.findall(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"', original)
+        require(len(dates) == 1, f"Legacy publication date missing or ambiguous: {article['url']}")
+        date.fromisoformat(dates[0])
+        article['published'] = dates[0]
     used = {a['url'] for a in legacy} | {'/articles/index.html'}
     articles = []
     for path in sorted((root / 'content/articles').glob('*.md')):
@@ -181,22 +197,14 @@ def build(root=ROOT):
                   'mainEntityOfPage': {'@type': 'WebPage', '@id': a['canonical']}}
         html = env.get_template('article.html').render(a=a, related=related, schema=schema)
         (out / a['url'].lstrip('/')).write_text(html, encoding='utf-8')
-    # Decorate legacy cards only in output; preserve their copy, images and order.
+    # Replace only the article section in output, leaving the landing source intact.
     home = (root / 'index.html').read_text(encoding='utf-8')
-    for article in legacy:
-        pattern = (r'(<a class="article-card" href="' + re.escape(article['url'].lstrip('/'))
-                   + r'">.*?<div class="article-card-body">)')
-        home, count = re.subn(pattern, lambda m: m[1] + '<p class="article-category">'
-                             + escape(article['category_label']) + '</p>', home, flags=re.S)
-        require(count == 1, f"Legacy homepage card missing or ambiguous: {article['url']}")
-    if public:
-        marker = '        <!-- Branch / CTA-->'
-        require(home.count(marker) == 1, 'Homepage insertion marker missing or ambiguous')
-        before, after = home.split(marker)
-        ending = re.search(r'(\s*</div>\s*</div>\s*</section>\s*)$', before)
-        require(ending is not None, 'Homepage article section shape changed')
-        cards = ''.join(env.get_template('article-card.html').render(a=a) for a in public)
-        home = before[:ending.start()] + cards + ending[0] + marker + after
+    start, end = '        <!-- Articles-->', '        <!-- Branch / CTA-->'
+    require(home.count(start) == home.count(end) == 1, 'Homepage article markers missing or ambiguous')
+    before, rest = home.split(start)
+    _, after = rest.split(end)
+    section = env.get_template('home-articles.html').render(groups=home_article_groups(catalog))
+    home = before + start + '\n' + section + '\n\n' + end + after
     (out / 'index.html').write_text(home, encoding='utf-8')
     (out / 'articles/index.html').write_text(env.get_template('article-list.html').render(
         articles=catalog, categories=CATEGORIES), encoding='utf-8')
