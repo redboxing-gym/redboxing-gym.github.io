@@ -22,6 +22,7 @@ class ArticleImageBrowserTests(unittest.TestCase):
     def setUpClass(cls):
         import markdown
         import yaml
+        from scripts.categories import CATEGORIES
         from jinja2 import Environment, FileSystemLoader
         from playwright.sync_api import sync_playwright
 
@@ -32,6 +33,9 @@ class ArticleImageBrowserTests(unittest.TestCase):
             # Pin the pre-fix baseline so this test also works after committing.
             ['git', 'show', '23c50c7aa67883e64e2665e11f21b8af06f099ad:css/article.css'], cwd=ROOT)
         cls.current_css = (ROOT / 'css/article.css').read_bytes()
+        # Give both image-rule baselines the new category UI typography. The
+        # extra label may change card height; this test isolates image sizing.
+        cls.original_css += b'\n' + cls.current_css.split(b'.article-list-section {', 1)[0]
         cls.playwright = sync_playwright().start()
         cls.browser = cls.playwright.chromium.launch()
         fixture_page = cls.browser.new_page()
@@ -50,6 +54,7 @@ class ArticleImageBrowserTests(unittest.TestCase):
         source = (ROOT / 'content/articles/hangsin-boxing-gym-guide.md').read_text(
             encoding='utf-8')
         article = yaml.safe_load(source.split('---', 2)[1])
+        article['category_label'] = CATEGORIES[article['category']]
         article['body'] = markdown.markdown(
             '## Image layout\n\n![Wide](/assets/img/wide.webp)\n\n'
             '[![Comic](/assets/img/test-article-comic.webp)](/assets/img/test-article-comic.webp)'

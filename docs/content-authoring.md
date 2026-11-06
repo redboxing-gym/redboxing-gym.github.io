@@ -15,15 +15,16 @@
 title: "복싱 첫 수업 준비 안내"
 description: "처음 복싱을 시작하는 분을 위한 수업 준비 안내."
 slug: "boxing-first-class"
+category: "boxing-beginners"
 published: "2026-10-10"
 updated: "2026-10-10"
 keywords: ["초보 복싱", "복싱 입문"]
 canonical: "https://redboxing-gym.github.io/articles/boxing-first-class.html"
-kicker: "BEGINNER BOXING"
+kicker: "복싱 입문 가이드"
 lead: "첫 수업을 준비할 때 확인할 사항입니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "레드복싱 운동 공간"
-tags: ["beginner", "boxing"]
+tags: ["초보자", "복싱"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: true
 ---
@@ -39,14 +40,17 @@ draft: true
 | --- | --- |
 | title / description | 비어 있지 않은 문자열. 검색 결과에 적합한 자연스러운 한국어 |
 | slug | 영문 소문자·숫자·단어 사이 하이픈. 파일명과 일치 |
+| category | 필수 문자열. [분류 정의](../scripts/categories.py)의 7개 식별자 중 하나. 대표 주제 하나를 선택 |
 | published / updated | 따옴표로 감싼 YYYY-MM-DD. 수정일은 작성일 이후 또는 같은 날 |
 | keywords | 한 개 이상 문자열 목록 |
 | canonical | `https://redboxing-gym.github.io/articles/<slug>.html`과 정확히 일치 |
-| kicker / lead | 카드·대표 영역 문구 |
+| kicker / lead | 카드·대표 영역 문구. kicker는 글 성격에 맞는 짧고 자연스러운 한국어 |
 | hero_image / hero_alt | 실제 존재하는 `/assets/img/` 파일의 경로와 대체 텍스트 |
-| tags | 선택 문자열 목록. 관련 글 우선순위에 사용 |
+| tags | 선택 문자열 목록. 새 원고는 의미가 분명한 한글 태그를 직접 저장하며 관련 글 우선순위에 사용 |
 | related | 선택 문자열 목록. 공개된 기존·신규 글의 `/articles/...html` 경로 |
 | draft | 따옴표 없는 `true` 또는 `false`, 반드시 명시 |
+
+카테고리 이름·순서는 `scripts/categories.py`에서만 관리합니다. `category`는 대표 분류이며 `tags`는 세부 주제 목록입니다. 태그와 kicker는 한글을 원본에 직접 저장하며 영문 ID를 중복 저장하거나 출력 시 번역하지 않습니다. 태그 사전은 미확정이므로 고정 허용 목록은 강제하지 않습니다. [태그 한글화 조사](tag-localization-review.md)의 임시 변환 기록·의미 검토 항목·러너 권고를 참고하세요. 초안에도 카테고리가 필요합니다. 기존 HTML 글의 카테고리·카드용 태그/kicker는 `content/legacy-articles.json`에서 관리하고 보호 HTML 원본은 수정하지 않습니다. 분류 기준과 여러 원고를 변경하는 구조 PR의 검수 방법은 [카테고리 시스템](category-system.md)을 참고하세요.
 
 제목은 템플릿이 H1으로 만듭니다. 본문은 `##`부터 사용합니다. 문단, 목록, 강조, 링크, 이미지, 표, 코드 블록을 지원합니다. 원시 HTML·스크립트·iframe·HTML 자동 링크는 지원하지 않습니다. 링크는 `[문구](URL)`로 작성합니다. 문의 CTA·지점 전화·카카오톡은 템플릿에서 제공합니다.
 

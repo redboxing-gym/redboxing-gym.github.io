@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "근육 크기는 비슷한데 힘이 늘었다면? 운동 초반의 신경 적응"
 description: "근력운동 초반에 몸의 크기보다 운동 기록이 먼저 달라지는 이유를 운동단위와 신경 신호로 설명합니다. 단기 훈련 연구의 범위와 초보자가 기록을 비교할 기준도 알아봅니다."
 slug: "early-strength-neural-adaptation"
@@ -10,7 +11,7 @@ kicker: "쉽게 이해하는 운동과학"
 lead: "힘을 내는 능력은 근육의 크기와 근육을 움직이는 신경의 신호가 함께 만듭니다."
 hero_image: "/assets/img/early-strength-neural-adaptation-hero.webp"
 hero_alt: "덤벨을 드는 성인과 운동신경이 여러 근섬유에 연결되는 모습을 함께 보여 주는 삽화"
-tags: ["exercise-science", "strength", "beginner"]
+tags: ["근력운동", "신경 적응"]
 draft: false
 ---
 

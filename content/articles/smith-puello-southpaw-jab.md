@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "스미스 대 푸에요 결과: 왼손잡이의 잽에 맞서 지킨 WBC 타이틀"
 description: "달튼 스미스가 알베르토 푸에요를 12라운드 2대1 판정으로 꺾었습니다. 푸에요의 오른손 잽과 스미스의 오른손 대응, 후반까지 이어진 접전을 공식 하이라이트와 함께 살펴봅니다."
 slug: "smith-puello-southpaw-jab"
@@ -10,7 +11,7 @@ kicker: "복싱 경기 리뷰"
 lead: "긴 잽으로 거리를 지키려는 도전자와 오른손으로 맞서는 챔피언. 서로 다른 앞손과 뒷손이 만든 12라운드의 접전입니다."
 hero_image: "/assets/img/smith-puello-southpaw-jab-hero.webp"
 hero_alt: "링에서 잽을 뻗는 가상의 복서와 글러브를 올리고 마주 선 상대를 그린 삽화"
-tags: ["boxing", "fight-review"]
+tags: ["경기 분석", "잽", "사우스포"]
 draft: false
 ---
 

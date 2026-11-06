@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "줄넘기가 자꾸 걸리는 이유 4가지 | 줄 길이부터 손목·점프 리듬까지"
 description: "줄넘기가 자꾸 걸린다면 줄 길이, 손목 위치, 점프 높이와 타이밍부터 점검해 보세요. 초보자를 위한 기본 뛰기와 복싱식 줄넘기 연습 순서를 소개합니다."
 slug: "boxing-jump-rope-troubleshooting"
@@ -15,9 +16,7 @@ kicker: "줄넘기 기초"
 lead: "줄넘기가 자꾸 걸린다면 더 높이 뛰거나 빠르게 돌리기보다 줄 길이, 손의 위치, 점프 리듬부터 차례로 확인해 보세요."
 hero_image: "/assets/img/boxing-jump-rope-troubleshooting-hero.webp"
 hero_alt: "복싱장에서 줄넘기를 낮고 가볍게 넘는 초보자"
-tags:
-  - boxing
-  - beginner
+tags: ["초보자", "줄넘기"]
 related:
   - "/articles/boxing-diet-beginner.html"
 draft: false

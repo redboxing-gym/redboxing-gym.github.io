@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "잽을 치기 전 손을 당기지 마세요: 상대에게 읽히지 않는 잽 연습"
 description: "복싱 잽을 치기 전 손을 뒤로 당기면 상대가 공격을 예상하기 쉽습니다. 예비 동작을 줄이고 가드에서 뻗어 회수하는 방법과 원투 연결 연습을 알아봅니다."
 slug: "boxing-jab-without-pullback"
@@ -10,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "좋은 잽은 주먹을 뒤로 당겨 힘을 모으기보다 가드에서 곧바로 출발합니다. 상대에게 공격을 미리 알리는 습관부터 줄여 보세요."
 hero_image: "/assets/img/boxing-jab-without-pullback-hero.webp"
 hero_alt: "앞손을 가드에서 목표 방향으로 곧장 뻗으며 잽의 출발을 연습하는 성인 수련자"
-tags: ["boxing", "beginner", "technique"]
+tags: ["초보자", "잽", "자세 교정"]
 related: ["/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

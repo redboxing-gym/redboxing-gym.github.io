@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "근육통이 줄면 운동 효과도 줄어들까? 반복 운동에 적응하는 몸"
 description: "처음에는 아팠던 운동이 익숙해지면 왜 덜 아플까요? 지연성 근육통과 반복 운동 효과의 원리, 근육 성장 연구의 한계, 통증 대신 살펴볼 훈련 기준을 알아봅니다."
 slug: "muscle-soreness-repeated-bout"
@@ -10,7 +11,7 @@ kicker: "몸으로 이해하는 운동과학"
 lead: "같은 운동을 몇 번 반복하면 다음 날 덜 뻐근해질 수 있습니다. 몸이 어떻게 적응하는지, 운동 기록은 무엇을 기준으로 볼지 알아봅니다."
 hero_image: "/assets/img/muscle-soreness-repeated-bout-hero.webp"
 hero_alt: "덤벨을 천천히 내리는 사람과 근섬유를 둘러싼 지지 조직을 함께 보여 주는 삽화"
-tags: ["exercise-science", "strength", "beginner"]
+tags: ["초보자", "근력운동", "운동 회복", "근육통"]
 draft: false
 ---
 

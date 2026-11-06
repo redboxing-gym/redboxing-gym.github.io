@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "전진하는 상대를 멈춘 바디샷: 곤살레스 vs 바스케스 2라운드 KO 분석"
 description: "곤살레스는 바스케스의 전진을 카운터로 받아친 뒤 머리와 몸통을 연속 공략해 2라운드 KO를 만들었습니다. 바디샷의 타이밍과 거리, 후속 공격을 분석합니다."
 slug: "gonzalez-vazquez-body-shot-finish"
@@ -10,7 +11,7 @@ kicker: "복싱 경기 돌아보기"
 lead: "바스케스가 먼저 압박했지만, 곤살레스는 상대 공격 사이의 빈틈을 찾아 반격했습니다. 오른손 카운터에서 왼손 바디샷까지 이어진 흐름을 살펴봅니다."
 hero_image: "/assets/img/gonzalez-vazquez-body-shot-finish-hero.webp"
 hero_alt: "링 중앙에서 가상의 복서가 상대의 벨트 위 몸통을 짧게 공격하는 설명용 삽화"
-tags: ["boxing", "fight-review"]
+tags: ["경기 분석", "바디샷", "카운터"]
 draft: false
 ---
 

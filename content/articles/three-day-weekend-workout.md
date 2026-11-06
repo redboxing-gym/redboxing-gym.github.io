@@ -1,4 +1,5 @@
 ---
+category: "workout-programs"
 title: "주 3일 운동으로도 효과가 있을까? 금·토·일 주말 운동의 장점"
 description: "평일에 시간이 없어도 금·토·일 주 3일 운동으로 체력과 건강을 관리할 수 있을까? 운동 권장량, 주말 운동의 효과, 복싱과 웨이트를 병행하는 현실적인 루틴을 알아봅니다."
 slug: "three-day-weekend-workout"
@@ -11,13 +12,11 @@ keywords:
   - 행신동 복싱
   - 레드복싱 행신점
 canonical: "https://redboxing-gym.github.io/articles/three-day-weekend-workout.html"
-kicker: "WEEKEND WORKOUT"
+kicker: "주말 운동 루틴"
 lead: "운동은 매일 해야만 효과가 있을까요? 중요한 건 일주일에 며칠 나오는지가 아니라, 자신에게 맞는 운동량을 꾸준히 확보하는 것입니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "레드복싱 행신점의 자유 운동 공간"
-tags:
-  - boxing
-  - workout
+tags: ["근력운동", "운동 일정", "운동 회복"]
 related:
   - "/articles/hangsin-diet-workout.html"
   - "/articles/boxing-diet-beginner.html"

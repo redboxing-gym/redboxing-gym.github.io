@@ -1,4 +1,5 @@
 ---
+category: "boxing-beginners"
 title: "행신동 복싱장 고르는 법: 초보자를 위한 7가지 체크리스트"
 description: "행신동에서 복싱장을 찾는 초보자를 위한 선택 기준 7가지. 지도 방식, 시설, 이용 시간, 비용, 안전과 체험 상담까지 꼼꼼히 확인해 보세요."
 slug: "hangsin-boxing-gym-guide"
@@ -11,13 +12,11 @@ keywords:
   - 복싱 초보
   - 레드복싱 행신점
 canonical: "https://redboxing-gym.github.io/articles/hangsin-boxing-gym-guide.html"
-kicker: "BEGINNER'S GUIDE"
+kicker: "복싱장 선택 가이드"
 lead: "복싱을 처음 시작한다면 장비나 운동 강도보다 자신에게 맞는 지도 방식과 꾸준히 다닐 수 있는 환경을 먼저 살펴보세요. 행신동에서 복싱장을 찾을 때 도움이 되는 일곱 가지 기준을 정리했습니다."
 hero_image: "/assets/img/freetime.webp"
 hero_alt: "복싱과 체력 운동을 할 수 있는 레드복싱 운동 공간"
-tags:
-  - boxing
-  - beginner
+tags: ["초보자", "체육관 선택"]
 related:
   - "/articles/boxing-diet-beginner.html"
   - "/articles/three-day-weekend-workout.html"

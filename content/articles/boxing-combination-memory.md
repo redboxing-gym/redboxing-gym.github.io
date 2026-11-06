@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 콤비네이션이 헷갈릴 때: 펀치 순서와 연결 익히는 법"
 description: "복싱 콤비네이션이 헷갈릴 때 짧은 조합부터 늘리는 방법과 전체 동작을 따라 하는 방법을 소개합니다. 펀치 순서뿐 아니라 연결과 리듬도 익혀 보세요."
 slug: "boxing-combination-memory"
@@ -10,7 +11,7 @@ kicker: "복싱 기초"
 lead: "콤비네이션이 헷갈린다면 짧은 동작부터 쌓거나 전체 흐름을 먼저 따라 해 보세요. 자신에게 맞는 방법으로 펀치의 연결을 익히는 것이 중요합니다."
 hero_image: "/assets/img/boxing-combination-memory-hero.webp"
 hero_alt: "코치의 미트를 보며 복싱 콤비네이션을 천천히 연습하는 초보자"
-tags: ["beginner", "boxing", "practice"]
+tags: ["초보자", "콤비네이션"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

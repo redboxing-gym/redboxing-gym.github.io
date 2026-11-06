@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 슬립 자세: 머리만 피하지 말고 균형까지 지키는 법"
 description: "복싱 슬립에서 머리만 기울이거나 몸이 쏠린다면? 무릎·몸통·발의 움직임으로 균형을 지키고 잽을 피한 뒤 반격까지 연결하는 연습법을 알아봅니다."
 slug: "boxing-slip-balance"
@@ -10,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "슬립은 머리를 크게 흔드는 동작이 아닙니다. 펀치의 공격선을 벗어나면서도 다음 펀치를 낼 수 있는 자세를 남기는 기술입니다."
 hero_image: "/assets/img/boxing-slip-balance-hero.webp"
 hero_alt: "가드를 유지하고 무릎을 살짝 굽힌 채 몸통을 작게 돌려 슬립을 연습하는 성인"
-tags: ["boxing", "beginner", "technique"]
+tags: ["초보자", "방어", "슬립"]
 related: ["/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

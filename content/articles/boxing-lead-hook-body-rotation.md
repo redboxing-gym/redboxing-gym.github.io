@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 앞손 훅 치는 법: 팔만 휘두르지 않고 몸통 회전 연결하기"
 description: "앞손 훅을 칠 때 팔만 움직이나요? 몸통 회전과 굽힌 팔이 연결되는 원리, 앞발과 무릎의 움직임, 흔한 실수와 느린 비접촉 점검법을 알아봅니다."
 slug: "boxing-lead-hook-body-rotation"
@@ -10,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "훅은 팔로 큰 원을 그리는 펀치가 아닙니다. 발의 지지와 몸통 회전을 굽힌 팔에 연결해 짧고 안정적으로 치는 방법을 알아봅니다."
 hero_image: "/assets/img/boxing-lead-hook-body-rotation-hero.webp"
 hero_alt: "왼발을 앞에 두고 오른손 가드를 유지하며 몸통 회전으로 짧은 왼훅을 연습하는 성인 복서"
-tags: ["boxing", "beginner", "technique"]
+tags: ["초보자", "훅"]
 related: ["/articles/boxing-combination-memory.html", "/articles/boxing-footwork-feet-crossing.html"]
 draft: false
 ---

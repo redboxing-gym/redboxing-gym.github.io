@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 잽 페인트 하는 법: 상대 반응을 읽고 다음 공격 연결하기"
 description: "잽 페인트는 단순히 손을 흔드는 기술이 아닙니다. 실제 잽과 닮은 출발, 타격 거리, 상대의 가드·발 움직임을 읽고 다음 행동을 선택하는 방법을 알아봅니다."
 slug: "boxing-jab-feint-response"
@@ -10,7 +11,7 @@ kicker: "복싱 기술 연습"
 lead: "잽 페인트의 목적은 상대를 놀라게 하는 것이 아니라 반응을 이끌어 내고 읽는 것입니다. 실제 잽과 닮은 출발과 거리, 후속 판단을 함께 연습해 보세요."
 hero_image: "/assets/img/boxing-jab-feint-response-hero.webp"
 hero_alt: "앞손을 짧게 움직이는 수련자와 거리를 두고 글러브의 움직임을 살피는 파트너"
-tags: ["boxing", "beginner", "technique"]
+tags: ["초보자", "잽", "페인트"]
 related: ["/articles/boxing-parry-small-movement.html"]
 draft: false
 ---

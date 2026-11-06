@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "운동할 때 땀이 많이 나는데 왜 덜 시원할까? 땀과 증발의 차이"
 description: "운동 중 땀이 흐르는 양과 몸이 식는 정도는 왜 다를까요? 열 생성과 땀의 증발, 습도와 공기 흐름의 원리를 사람 대상 연구와 함께 살펴보고 복싱 연습에 적용할 기준을 알아봅니다."
 slug: "sweat-evaporation-exercise-cooling"
@@ -10,7 +11,7 @@ kicker: "운동과학"
 lead: "땀을 만드는 과정과 땀이 열을 가져가는 과정은 다릅니다. 습도와 공기 흐름을 함께 보면 운동 중 더위를 이해하기 쉽습니다."
 hero_image: "/assets/img/sweat-evaporation-exercise-cooling-hero.webp"
 hero_alt: "복싱 연습을 쉬는 사람의 팔에서 땀방울이 증발하며 열을 내보내는 과정을 보여 주는 그림"
-tags: ["boxing", "exercise-science", "beginner"]
+tags: ["초보자", "체온 조절"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

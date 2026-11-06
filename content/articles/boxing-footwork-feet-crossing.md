@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 스텝 밟는 법: 앞뒤·좌우 이동과 발이 꼬이지 않는 방법"
 description: "복싱 스텝 밟는 법을 초보자 눈높이에서 설명합니다. 기본 스탠스부터 앞뒤·좌우 이동, 발이 꼬이지 않는 방법과 펀치 연결까지 알아보세요."
 slug: "boxing-footwork-feet-crossing"
@@ -10,7 +11,7 @@ kicker: "초보 복싱 스텝"
 lead: "발이 자꾸 붙거나 교차한다면 빠르게 움직이기보다 어느 발이 먼저 가는지부터 확인해 보세요."
 hero_image: "/assets/img/boxing-footwork-feet-crossing-hero.webp"
 hero_alt: "복싱 체육관에서 두 발의 간격을 유지하며 기본 스텝을 연습하는 초보자"
-tags: ["beginner", "boxing", "footwork"]
+tags: ["초보자", "풋워크"]
 related: ["/articles/boxing-diet-beginner.html"]
 draft: false
 ---

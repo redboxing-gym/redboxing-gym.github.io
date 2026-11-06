@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "복싱 카운터와 재공세는 어떻게 통할까? 오수나 vs 칸젤로시 경기 분석"
 description: "오수나와 칸젤로시의 2026년 10월 17일 경기에서 4라운드의 거리 조절과 5라운드의 재공세를 살펴봅니다. 실제 경기 장면을 복싱 기본기 연습과 연결해 해석합니다."
 slug: "osuna-cangelosi-fifth-round-response"
@@ -10,7 +11,7 @@ kicker: "경기로 배우는 복싱"
 lead: "4라운드에는 거리를 벌려 대응한 칸젤로시가, 5라운드에는 다시 밀고 들어온 오수나가 돋보였습니다. 공격과 반격을 연습할 때 무엇을 봐야 할까요?"
 hero_image: "/assets/img/osuna-cangelosi-fifth-round-response-hero.webp"
 hero_alt: "링에서 한 손을 뻗어 공격하는 가상의 복서와 두 글러브로 얼굴을 방어하는 상대의 삽화"
-tags: ["boxing", "review"]
+tags: ["경기 분석", "카운터", "거리 조절", "콤비네이션"]
 draft: false
 ---
 

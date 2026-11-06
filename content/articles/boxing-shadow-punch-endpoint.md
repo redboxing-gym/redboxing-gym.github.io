@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "섀도복싱에서 팔꿈치가 아프다면? 펀치를 뻗고 회수하는 방법"
 description: "섀도복싱에서 팔꿈치를 끝까지 세게 펴고 있나요? 펀치를 충분히 뻗으면서도 팔꿈치에 무리가 가지 않도록 속도와 회수 동작을 조절하는 연습을 소개합니다."
 slug: "boxing-shadow-punch-endpoint"
@@ -10,7 +11,7 @@ kicker: "복싱 기술과 교정"
 lead: "섀도복싱에서도 펀치는 충분히 뻗어야 합니다. 다만 마지막 순간 팔꿈치를 세게 펴서 멈추는 습관은 주의해야 합니다."
 hero_image: "/assets/img/boxing-shadow-punch-endpoint-hero.webp"
 hero_alt: "옆모습의 성인 수련자가 팔꿈치를 뒤로 꺾지 않고 공중으로 잽을 뻗는 모습"
-tags: ["boxing", "beginner", "technique"]
+tags: ["초보자", "섀도복싱", "펀치 회수"]
 related: ["/articles/boxing-mirror-gaze.html", "/articles/boxing-breathing-basics.html"]
 draft: false
 ---

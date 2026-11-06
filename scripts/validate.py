@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
 from xml.etree import ElementTree as ET
 
-from build import BASE, NS, ROOT, load_articles, require
+from build import BASE, NS, ROOT, home_article_groups, load_articles, require
 
 
 class Page(HTMLParser):
@@ -111,8 +111,15 @@ def validate(root, out, manifest, articles):
         schema = page.schemas[0]
         require(schema['datePublished'] == a['published'] and schema['dateModified'] == a['updated']
                 and schema['mainEntityOfPage']['@id'] == a['canonical'], f'{path}: schema mismatch')
-        require(a['url'] in pages['index.html'].refs and a['url'] in pages['articles/index.html'].refs,
+        require(a['url'] in pages['articles/index.html'].refs,
                 f'{path}: missing listing link')
+    # The landing page samples at most four latest articles per nonempty category.
+    expected_home = {a['url'] for group in home_article_groups(manifest['articles'] + articles)
+                     for a in group['articles']}
+    actual_home = {ref for ref in pages['index.html'].refs
+                   if ref.startswith('/articles/') and ref != '/articles/index.html'}
+    require(actual_home == expected_home, 'Homepage category selection mismatch')
+    require('/articles/index.html' in pages['index.html'].refs, 'Homepage catalog CTA missing')
     expected = {BASE + '/', BASE + '/articles/index.html', *[BASE + a['url'] for a in manifest['articles']],
                 *[a['canonical'] for a in articles if not a['draft']]}
     for name in ['sitemap.xml', 'sitemap-pages.xml']:

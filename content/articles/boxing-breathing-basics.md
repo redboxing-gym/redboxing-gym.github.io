@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 호흡법: 펀치할 때 숨을 참지 않는 연습"
 description: "복싱 초보자가 펀치 순간 짧게 숨을 내쉬고, 연타 사이에도 호흡을 이어 가는 쉬운 연습 순서를 소개합니다."
 slug: "boxing-breathing-basics"
@@ -6,11 +7,11 @@ published: "2026-10-19"
 updated: "2026-10-19"
 keywords: ["복싱 호흡법", "초보 복싱", "복싱 기초", "펀치 호흡"]
 canonical: "https://redboxing-gym.github.io/articles/boxing-breathing-basics.html"
-kicker: "BEGINNER BOXING"
+kicker: "복싱 입문 가이드"
 lead: "세게 치는 것보다 먼저, 펀치와 호흡을 함께 이어 가는 감각을 익혀 보세요."
 hero_image: "/assets/img/boxing-breathing-basics-hero.webp"
 hero_alt: "밝은 복싱 연습 공간에서 샌드백에 가볍게 잽을 뻗는 초보자"
-tags: ["beginner", "boxing", "technique"]
+tags: ["초보자", "호흡", "잽", "콤비네이션"]
 related: ["/articles/boxing-diet-beginner.html", "/articles/hangsin-boxing-gym-guide.html"]
 draft: false
 ---

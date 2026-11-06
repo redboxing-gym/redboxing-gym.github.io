@@ -12,6 +12,11 @@ import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 
+if __package__:
+    from .categories import CATEGORIES
+else:
+    from categories import CATEGORIES
+
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://redboxing-gym.github.io'
 NS = 'http://www.sitemaps.org/schemas/sitemap/0.9'
@@ -20,6 +25,25 @@ NS = 'http://www.sitemaps.org/schemas/sitemap/0.9'
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def set_category_label(article, filename):
+    require('category' in article, f'{filename}: missing category')
+    category = article['category']
+    require(isinstance(category, str) and category in CATEGORIES,
+            f'{filename}: invalid category')
+    article['category_label'] = CATEGORIES[category]
+
+
+def home_article_groups(catalog):
+    """Bounded homepage selection; the complete catalog stays on the list page."""
+    groups = []
+    for category, label in CATEGORIES.items():
+        items = sorted((a for a in catalog if a['category'] == category and not a.get('draft', False)),
+                       key=lambda a: (a['published'], a['url']), reverse=True)[:4]
+        if items:
+            groups.append({'id': category, 'label': label, 'articles': items})
+    return groups
 
 
 class UniqueLoader(yaml.SafeLoader):
@@ -73,6 +97,14 @@ def load_articles(root):
         require(hashlib.sha256((root / path).read_bytes()).hexdigest() == digest,
                 f'Protected file changed: {path}')
     legacy = manifest['articles']
+    for article in legacy:
+        set_category_label(article, article['url'])
+        # Read the immutable original date rather than inventing a legacy date.
+        original = (root / article['url'].lstrip('/')).read_text(encoding='utf-8')
+        dates = re.findall(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})"', original)
+        require(len(dates) == 1, f"Legacy publication date missing or ambiguous: {article['url']}")
+        date.fromisoformat(dates[0])
+        article['published'] = dates[0]
     used = {a['url'] for a in legacy} | {'/articles/index.html'}
     articles = []
     for path in sorted((root / 'content/articles').glob('*.md')):
@@ -82,10 +114,11 @@ def load_articles(root):
         meta = yaml.load(match[1], Loader=UniqueLoader)
         require(isinstance(meta, dict), f'{path.name}: metadata must be a mapping')
         allowed = {'title', 'description', 'slug', 'published', 'updated', 'keywords',
-                   'canonical', 'kicker', 'lead', 'hero_image', 'hero_alt', 'tags', 'related', 'draft'}
+                   'canonical', 'kicker', 'lead', 'hero_image', 'hero_alt', 'tags', 'related', 'draft', 'category'}
         require(not set(meta) - allowed, f'{path.name}: unknown metadata fields')
         for key in allowed - {'related', 'tags'}:
             require(key in meta, f'{path.name}: missing {key}')
+        set_category_label(meta, path.name)
         require(type(meta['draft']) is bool, f'{path.name}: draft must be true or false')
         for key in ['title', 'description', 'slug', 'canonical', 'kicker', 'lead', 'hero_image', 'hero_alt']:
             require(isinstance(meta[key], str) and meta[key].strip(), f'{path.name}: invalid {key}')
@@ -164,18 +197,17 @@ def build(root=ROOT):
                   'mainEntityOfPage': {'@type': 'WebPage', '@id': a['canonical']}}
         html = env.get_template('article.html').render(a=a, related=related, schema=schema)
         (out / a['url'].lstrip('/')).write_text(html, encoding='utf-8')
-    # Existing homepage cards and order remain byte-identical; add cards only in output.
-    if public:
-        home = (root / 'index.html').read_text(encoding='utf-8')
-        marker = '        <!-- Branch / CTA-->'
-        require(home.count(marker) == 1, 'Homepage insertion marker missing or ambiguous')
-        before, after = home.split(marker)
-        ending = re.search(r'(\s*</div>\s*</div>\s*</section>\s*)$', before)
-        require(ending is not None, 'Homepage article section shape changed')
-        cards = ''.join(env.get_template('article-card.html').render(a=a) for a in public)
-        home = before[:ending.start()] + cards + ending[0] + marker + after
-        (out / 'index.html').write_text(home, encoding='utf-8')
-    (out / 'articles/index.html').write_text(env.get_template('article-list.html').render(articles=catalog), encoding='utf-8')
+    # Replace only the article section in output, leaving the landing source intact.
+    home = (root / 'index.html').read_text(encoding='utf-8')
+    start, end = '        <!-- Articles-->', '        <!-- Branch / CTA-->'
+    require(home.count(start) == home.count(end) == 1, 'Homepage article markers missing or ambiguous')
+    before, rest = home.split(start)
+    _, after = rest.split(end)
+    section = env.get_template('home-articles.html').render(groups=home_article_groups(catalog))
+    home = before + start + '\n' + section + '\n\n' + end + after
+    (out / 'index.html').write_text(home, encoding='utf-8')
+    (out / 'articles/index.html').write_text(env.get_template('article-list.html').render(
+        articles=catalog, categories=CATEGORIES), encoding='utf-8')
     for name in ['sitemap.xml', 'sitemap-pages.xml']:
         tree = ET.parse(root / name)
         existing = {node.find(f'{{{NS}}}loc').text for node in tree.getroot()}

@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "모레노의 압박을 무너뜨린 잽과 거리 조절: 카바나의 UFC 멕시코 승리"
 description: "로너 카바나가 브랜던 모레노에게 판정승을 거둔 UFC 멕시코 경기. 잽과 카운터, 스텝으로 거리를 관리한 방식과 모레노의 클린치 대응을 분석합니다."
 slug: "kavanagh-moreno-leg-kicks-clinch"
@@ -10,7 +11,7 @@ kicker: "격투 스포츠 다시 보기"
 lead: "카바나는 잽과 카운터로 모레노의 전진을 끊었고, 모레노는 클린치로 거리를 지웠습니다. 같은 경기에서 두 선수가 벌인 거리 싸움을 복싱의 관점으로 살펴봅니다."
 hero_image: "/assets/img/kavanagh-moreno-leg-kicks-clinch-hero.webp"
 hero_alt: "철망 경기장에서 다리 공격 거리와 몸을 붙이는 클린치 거리를 나란히 보여 주는 설명 삽화"
-tags: ["mma", "fight-review", "boxing"]
+tags: ["경기 분석", "종합격투기", "거리 조절", "클린치"]
 draft: false
 ---
 
