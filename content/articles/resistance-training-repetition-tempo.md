@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "무게를 천천히 들수록 근육이 더 잘 자랄까? 반복 속도의 원리"
 description: "웨이트를 천천히 하면 근육에 힘을 주는 시간은 늘어납니다. 하지만 시간이 길다고 성장 자극도 비례할까요? 힘과 속도의 관계, 반복 속도 연구와 운동 기록을 비교할 기준을 알아봅니다."
 slug: "resistance-training-repetition-tempo"

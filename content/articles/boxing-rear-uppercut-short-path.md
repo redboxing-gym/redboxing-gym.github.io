@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 어퍼컷 치는 법: 주먹을 허리까지 내리지 않는 이유"
 description: "어퍼컷을 치려고 손을 크게 내리고 있나요? 뒷손 어퍼컷의 짧은 상승 경로와 다리·골반의 연결을 이해하고, 퍼 올리기와 몸 젖히기를 구분해 점검하는 연습을 소개합니다."
 slug: "boxing-rear-uppercut-short-path"

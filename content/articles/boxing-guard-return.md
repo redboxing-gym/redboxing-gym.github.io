@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 가드 올리는 법: 펀치 후 손이 내려가는 습관 고치기"
 description: "펀치를 친 뒤 손이 내려가나요? 가드 복귀가 중요한 이유와 잽·스트레이트 후 손을 빠르게 되돌리는 방법, 연타 중 반대손 가드를 유지하는 연습을 알아봅니다."
 slug: "boxing-guard-return"

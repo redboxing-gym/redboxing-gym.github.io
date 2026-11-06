@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "포스터는 어떻게 나바레테의 압박을 역이용했을까? 12라운드 두 차례 다운 분석"
 description: "포스터가 나바레테의 전진을 카운터 오른손으로 공략해 12라운드 두 차례 다운을 만들었습니다. 거리 조절, 반격 타이밍, WBC·WBO·IBF 통합전 결과를 분석합니다."
 slug: "foster-navarrete-final-round"

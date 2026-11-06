@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "같은 덤벨인데 왜 팔 각도에 따라 더 무겁게 느껴질까?"
 description: "덤벨 컬 중간에서 힘이 더 드는 이유를 토크와 근육의 지렛대 구조로 설명합니다. 관절 각도 연구의 범위와 덤벨·케이블 저항을 비교할 기준도 알아봅니다."
 slug: "dumbbell-curl-angle-torque"

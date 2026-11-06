@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "레센디스 대 마주디어 결과: 후반 추격을 넘긴 10라운드 판정승"
 description: "아르만도 레센디스가 코엔 마주디어를 10라운드 전원일치 판정으로 꺾었습니다. 전반의 우세와 후반 추격, 마지막 라운드의 대응을 공식 하이라이트와 함께 살펴봅니다."
 slug: "resendiz-mazoudier-late-rally"

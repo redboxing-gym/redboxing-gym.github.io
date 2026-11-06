@@ -1,4 +1,5 @@
 ---
+category: "boxing-beginners"
 title: "복싱 스파링, 아직 하고 싶지 않을 때 말하는 법"
 description: "복싱 스파링이 부담스러운 초보자를 위해 참여를 거절하는 방법, 대체 운동, 중단할 권리와 체육관 선택 기준을 안내합니다."
 slug: "boxing-sparring-participation"

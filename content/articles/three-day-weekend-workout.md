@@ -1,4 +1,5 @@
 ---
+category: "workout-programs"
 title: "주 3일 운동으로도 효과가 있을까? 금·토·일 주말 운동의 장점"
 description: "평일에 시간이 없어도 금·토·일 주 3일 운동으로 체력과 건강을 관리할 수 있을까? 운동 권장량, 주말 운동의 효과, 복싱과 웨이트를 병행하는 현실적인 루틴을 알아봅니다."
 slug: "three-day-weekend-workout"

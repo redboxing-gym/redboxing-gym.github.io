@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "운동할 때 땀이 많이 나는데 왜 덜 시원할까? 땀과 증발의 차이"
 description: "운동 중 땀이 흐르는 양과 몸이 식는 정도는 왜 다를까요? 열 생성과 땀의 증발, 습도와 공기 흐름의 원리를 사람 대상 연구와 함께 살펴보고 복싱 연습에 적용할 기준을 알아봅니다."
 slug: "sweat-evaporation-exercise-cooling"

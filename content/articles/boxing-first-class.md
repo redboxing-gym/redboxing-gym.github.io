@@ -1,4 +1,5 @@
 ---
+category: "boxing-beginners"
 title: "복싱 첫 수업 준비 안내 (검증용 초안)"
 description: "Markdown 콘텐츠 관리 구조를 확인하기 위한 미게시 테스트 원고입니다."
 slug: "boxing-first-class"

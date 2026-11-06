@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "스트레칭하면 근육이 길어질까? 가동범위가 늘어나는 이유"
 description: "스트레칭 후 더 멀리 움직인다고 근육이 영구적으로 길어진 걸까요? 조직의 저항과 당김을 받아들이는 변화, 연구에서 측정한 유연성과 실제 동작의 차이를 알아봅니다."
 slug: "stretching-range-of-motion-tolerance"

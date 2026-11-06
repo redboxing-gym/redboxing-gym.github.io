@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 미트가 올라오면 바로 쳐야 할까? 초보자를 위한 타이밍과 거리 연습"
 description: "처음 복싱 미트를 칠 때는 신호만 기다리는 것이 아니라 표적을 보고 거리와 타이밍을 맞추는 연습이 중요합니다. 잽부터 원투까지 단계별 미트 훈련을 소개합니다."
 slug: "boxing-mitt-start-signal"

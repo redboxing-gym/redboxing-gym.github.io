@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 거울 연습, 어디를 볼까? 손만 따라보지 않는 시선 연습"
 description: "거울 앞에서 복싱을 연습할 때 주먹이나 발만 보게 되나요? 정면에 시선 기준을 정하고, 세부 자세는 멈춰 확인하며, 거울 없이도 앞을 보는 연습을 소개합니다."
 slug: "boxing-mirror-gaze"

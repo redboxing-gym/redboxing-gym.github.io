@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "섀도복싱에서 팔꿈치가 아프다면? 펀치를 뻗고 회수하는 방법"
 description: "섀도복싱에서 팔꿈치를 끝까지 세게 펴고 있나요? 펀치를 충분히 뻗으면서도 팔꿈치에 무리가 가지 않도록 속도와 회수 동작을 조절하는 연습을 소개합니다."
 slug: "boxing-shadow-punch-endpoint"

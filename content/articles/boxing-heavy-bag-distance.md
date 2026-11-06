@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "샌드백을 칠 때 자꾸 가까워진다면: 복싱 거리 조절 연습"
 description: "샌드백 앞에서 팔이 접히거나 몸이 붙는 복싱 초보자를 위해 시작 거리 확인, 짧은 타격, 자세 복귀와 거리 점검 방법을 안내합니다."
 slug: "boxing-heavy-bag-distance"

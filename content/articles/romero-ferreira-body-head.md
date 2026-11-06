@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "복싱 바디샷이 안면 공격의 기회를 만드는 원리 | 로메로 경기 분석"
 description: "로메로와 페레이라의 1라운드 경기를 통해 바디샷으로 방어 반응을 유도하고 안면 공격으로 전환하는 복싱 원리를 살펴봅니다. 초보자 미트 연습에도 연결해 봅니다."
 slug: "romero-ferreira-body-head"

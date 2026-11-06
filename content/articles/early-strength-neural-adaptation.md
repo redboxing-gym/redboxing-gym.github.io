@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "근육 크기는 비슷한데 힘이 늘었다면? 운동 초반의 신경 적응"
 description: "근력운동 초반에 몸의 크기보다 운동 기록이 먼저 달라지는 이유를 운동단위와 신경 신호로 설명합니다. 단기 훈련 연구의 범위와 초보자가 기록을 비교할 기준도 알아봅니다."
 slug: "early-strength-neural-adaptation"

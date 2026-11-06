@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "뒤부아 vs 워들리 2차전 결과: 2라운드 TKO로 지킨 WBO 타이틀"
 description: "다니엘 뒤부아가 파비오 워들리와의 재대결에서 2라운드 TKO로 WBO 헤비급 타이틀을 지켰습니다. 첫 경기와 달라진 초반 흐름, 코너의 수건 투척과 경기 중단을 살펴봅니다."
 slug: "dubois-wardley-rematch-result"

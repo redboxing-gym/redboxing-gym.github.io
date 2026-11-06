@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 스탠스 잡는 법: 오른손잡이는 왜 왼발을 앞에 둘까?"
 description: "복싱 스탠스는 어느 발을 앞에 둘까요? 오소독스와 사우스포의 차이, 앞손과 뒷손의 역할, 발 간격과 균형을 확인하는 초보자 연습법을 소개합니다."
 slug: "boxing-stance-front-foot"

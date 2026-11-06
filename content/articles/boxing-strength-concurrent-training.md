@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "복싱과 웨이트를 같은 날 하면 근육 성장을 방해할까?"
 description: "유산소·근력 운동을 병행할 때 근육에서 일어나는 적응을 설명합니다. 근육 크기와 순간적인 힘의 차이, 병행 훈련 연구의 한계와 운동 순서를 정할 기준을 알아봅니다."
 slug: "boxing-strength-concurrent-training"

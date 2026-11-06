@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 패링, 손을 얼마나 움직여야 할까? 크게 쳐내는 습관 줄이기"
 description: "패링할 때 손이 크게 벌어진다면 이동 폭과 팔꿈치부터 살펴보세요. 직선 펀치의 방향을 작게 바꾸는 원리와 비접촉 점검, 코치와 연습할 때 확인할 기준을 안내합니다."
 slug: "boxing-parry-small-movement"

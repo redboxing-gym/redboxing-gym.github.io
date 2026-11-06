@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "두 번 쓰러뜨린 오른손, 왜 승리로 이어지지 못했을까? 히즈리예프 vs 브라가"
 description: "브라가의 오른손이 두 차례 다운을 만들었지만 승자는 히즈리예프였습니다. 오른손 공격, 후속 타격, 잽과 거리 조절의 원리를 PFL 경기와 함께 살펴봅니다."
 slug: "khizriev-braga-split-decision"

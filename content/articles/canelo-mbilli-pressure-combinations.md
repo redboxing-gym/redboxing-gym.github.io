@@ -1,4 +1,5 @@
 ---
+category: "match-analysis"
 title: "음빌리의 압박을 카넬로는 어떻게 풀었나? 카운터와 근거리 콤비네이션 분석"
 description: "카넬로 알바레스가 크리스티안 음빌리의 전진을 가드·상체 움직임·카운터로 받아내고 WBC 타이틀을 탈환했습니다. 7라운드 어퍼컷과 잽, 거리 조절을 분석합니다."
 slug: "canelo-mbilli-pressure-combinations"

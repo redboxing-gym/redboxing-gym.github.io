@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 피벗 하는 법: 앞발을 축으로 공격 각도 바꾸기"
 description: "복싱 피벗은 앞발을 축으로 뒷발과 몸을 돌려 새로운 공격 각도를 만드는 풋워크입니다. 앞발 회전, 뒷발 이동, 균형과 가드 유지 방법을 알아봅니다."
 slug: "boxing-pivot-lead-foot-turn"

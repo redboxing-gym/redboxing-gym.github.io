@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 바디 잽 치는 법: 허리만 숙이지 말고 무릎으로 높이 낮추기"
 description: "복싱 바디 잽을 칠 때 허리만 숙이고 있나요? 무릎을 굽혀 몸의 높이를 낮추고, 뒷손 가드와 시선을 유지하며 바디 잽을 뻗는 방법을 알아봅니다."
 slug: "boxing-body-jab-level-change"

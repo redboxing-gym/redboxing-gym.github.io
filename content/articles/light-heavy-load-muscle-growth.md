@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "가벼운 무게로도 근육이 자랄까? 근육 성장과 최대근력의 차이"
 description: "가벼운 덤벨도 근육 성장에 도움이 될까요? 운동단위 동원과 피로의 원리, 가벼운 무게와 무거운 무게를 비교한 연구의 조건, 운동 목표에 맞춰 저항을 고르는 기준을 알아봅니다."
 slug: "light-heavy-load-muscle-growth"

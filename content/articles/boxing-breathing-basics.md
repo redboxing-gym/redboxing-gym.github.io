@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 호흡법: 펀치할 때 숨을 참지 않는 연습"
 description: "복싱 초보자가 펀치 순간 짧게 숨을 내쉬고, 연타 사이에도 호흡을 이어 가는 쉬운 연습 순서를 소개합니다."
 slug: "boxing-breathing-basics"

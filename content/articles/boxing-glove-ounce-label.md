@@ -1,4 +1,5 @@
 ---
+category: "boxing-beginners"
 title: "복싱 글러브 온스별 차이와 선택법: 10·12·14·16oz 비교"
 description: "복싱 글러브 온스는 손 크기일까요? 10·12·14·16oz의 무게 차이와 백글러브·스파링 글러브의 용도, 초보자가 구매 전에 확인할 사항을 정리했습니다."
 slug: "boxing-glove-ounce-label"

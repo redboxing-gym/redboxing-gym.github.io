@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 잽 페인트 하는 법: 상대 반응을 읽고 다음 공격 연결하기"
 description: "잽 페인트는 단순히 손을 흔드는 기술이 아닙니다. 실제 잽과 닮은 출발, 타격 거리, 상대의 가드·발 움직임을 읽고 다음 행동을 선택하는 방법을 알아봅니다."
 slug: "boxing-jab-feint-response"

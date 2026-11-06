@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "세트 사이에 쉬면 왜 다시 힘이 날까? 에너지 회복과 휴식시간"
 description: "세트 사이 휴식 중 근육에서는 무엇이 회복될까요? 인산크레아틴과 산화적 에너지 공급의 원리, 휴식시간 연구의 범위, 웨이트와 복싱 연습에 적용할 기준을 설명합니다."
 slug: "rest-between-sets-energy-recovery"

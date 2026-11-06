@@ -1,4 +1,5 @@
 ---
+category: "exercise-science"
 title: "운동 중 생긴 젖산은 어디로 갈까? 몸이 다시 쓰는 연료"
 description: "운동할 때 만들어지는 젖산은 어떻게 다른 근육과 심장의 연료가 될까요? 해당과정과 젖산 셔틀, 혈중 농도와 이동량의 차이, 사람 대상 연구의 범위를 쉽게 설명합니다."
 slug: "exercise-lactate-fuel-shuttle"

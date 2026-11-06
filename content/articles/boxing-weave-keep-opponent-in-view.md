@@ -1,4 +1,5 @@
 ---
+category: "boxing-technique"
 title: "복싱 위빙 하는 법: 바닥을 보지 않고 훅 아래로 피하는 방법"
 description: "위빙을 하다가 시선이 바닥으로 떨어지나요? 훅 아래를 지나는 경로와 무릎으로 높이를 낮추는 원리, 숙임·깊이·일어나는 시점을 나눠 점검하는 비접촉 연습을 알아봅니다."
 slug: "boxing-weave-keep-opponent-in-view"

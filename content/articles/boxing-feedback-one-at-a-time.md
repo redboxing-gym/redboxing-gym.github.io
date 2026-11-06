@@ -1,4 +1,5 @@
 ---
+category: "boxing-beginners"
 title: "복싱 자세를 고칠 곳이 많을 때: 한 번에 하나씩 적용하기"
 description: "복싱 수업에서 여러 자세 교정을 한꺼번에 받으면 무엇부터 고쳐야 할까요? 우선순위를 묻고, 확인할 순간을 정하고, 코치에게 다시 보여 주는 방법을 소개합니다."
 slug: "boxing-feedback-one-at-a-time"
