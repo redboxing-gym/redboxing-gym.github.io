@@ -14,8 +14,10 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoes
 
 if __package__:
     from .categories import CATEGORIES
+    from .recommendations import recommend_related
 else:
     from categories import CATEGORIES
+    from recommendations import recommend_related
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://redboxing-gym.github.io'
@@ -135,7 +137,10 @@ def load_articles(root):
             date.fromisoformat(value)
             meta[key] = value
         require(meta['updated'] >= meta['published'], f'{path.name}: updated precedes published')
-        for key in ['keywords', 'tags', 'related']:
+        # Deprecated manual recommendations are accepted but never interpreted,
+        # type/URL-validated, rendered or used in automatic ranking.
+        meta.pop('related', None)
+        for key in ['keywords', 'tags']:
             meta.setdefault(key, [])
             require(isinstance(meta[key], list) and all(isinstance(v, str) and v.strip() for v in meta[key]),
                     f'{path.name}: {key} must be a string list')
@@ -168,9 +173,6 @@ def build(root=ROOT):
     manifest, legacy, articles = load_articles(root)
     public = sorted([a for a in articles if not a['draft']], key=lambda a: (a['published'], a['slug']), reverse=True)
     catalog = legacy + public
-    lookup = {a['url']: a for a in catalog}
-    for a in articles:
-        require(all(u in lookup and u != a['url'] for u in a['related']), f"{a['slug']}: invalid related URL")
     out = root / 'dist'
     # Only this fixed, verified directory is disposable.
     require(not out.is_symlink() and out.resolve() == root.resolve() / 'dist', 'Unsafe output directory')
@@ -185,10 +187,7 @@ def build(root=ROOT):
     env = Environment(loader=FileSystemLoader(root / 'templates'), undefined=StrictUndefined,
                       autoescape=select_autoescape(['html']))
     for a in public:
-        explicit = [lookup[u] for u in a['related']]
-        candidates = sorted((b for b in catalog if b['url'] != a['url']),
-                            key=lambda b: (-len(set(a['tags']) & set(b['tags'])), b['url']))
-        related = (explicit + [b for b in candidates if b not in explicit])[:3]
+        related = recommend_related(a, catalog)
         schema = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'],
                   'description': a['description'], 'image': BASE + a['hero_image'],
                   'datePublished': a['published'], 'dateModified': a['updated'],
