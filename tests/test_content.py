@@ -54,8 +54,10 @@ class ContentTests(unittest.TestCase):
         self.assertTrue((out / 'articles/boxing-first-class.html').is_file())
         self.assertTrue((out / 'articles/boxing-second-class.html').is_file())
 
-        # 명시적으로 지정한 관련 글 링크 확인
-        self.assertIn('href="/articles/boxing-diet-beginner.html"', html)
+        # Recommendations are automatic; the panel structure still has 3
+        # article links followed by the complete-catalog link.
+        panel = html.split('<div class="article-related-panel">', 1)[1].split('</div>', 1)[0]
+        self.assertEqual(panel.count('<a href='), 4)
         build(self.root)
         self.assertEqual(first, {p.relative_to(out).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()})
 

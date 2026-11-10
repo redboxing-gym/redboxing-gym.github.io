@@ -64,7 +64,7 @@ class TagLocalizationTests(unittest.TestCase):
                 self.assertEqual(actual['tags'], tags)
                 self.assertTrue(actual['draft'])
 
-    def test_korean_tag_matching_keeps_explicit_then_overlap_order(self):
+    def test_korean_tag_matching_automatically_prefers_specific_overlap(self):
         _, front, body = self.draft.read_text(encoding='utf-8').split('---', 2)
         base = yaml.safe_load(front)
         fixtures = [
@@ -81,9 +81,11 @@ class TagLocalizationTests(unittest.TestCase):
         out = build(self.root)
         html = (out / 'articles/boxing-first-class.html').read_text(encoding='utf-8')
         panel = re.search(r'<div class="article-related-panel">(.*?)</div>', html, re.S)[1]
-        self.assertEqual(re.findall(r'href="([^"]+)"', panel), [
-            '/articles/stress-relief-boxing.html', '/articles/localization-test-strong.html',
-            '/articles/localization-test-weak.html', '/articles/index.html'])
+        links = re.findall(r'href="([^"]+)"', panel)
+        self.assertEqual(links[:2], ['/articles/localization-test-strong.html',
+                                     '/articles/localization-test-weak.html'])
+        self.assertEqual(len(links), 4)
+        self.assertEqual(links[-1], '/articles/index.html')
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-"""Category migration, output and existing recommendation contract regressions."""
+"""Category migration, output and automatic cross-category recommendations."""
 import json
 import re
 import shutil
@@ -97,15 +97,15 @@ class CategoryTests(unittest.TestCase):
             self.assertEqual((self.root / path).read_bytes(), (out / path).read_bytes())
         self.assertEqual((ROOT / 'index.html').read_bytes(), (self.root / 'index.html').read_bytes())
 
-    def test_explicit_related_then_tag_overlap_without_category_scoring(self):
+    def test_specific_tags_cross_category_override_manual_related(self):
         source = self.draft.read_text(encoding='utf-8')
         _, front, body = source.split('---', 2)
         base = yaml.safe_load(front)
         fixtures = [
-            ('boxing-first-class', ['signal-a', 'signal-b'], 'boxing-beginners',
+            ('boxing-first-class', ['균형점검', '리듬점검'], 'boxing-beginners',
              ['/articles/stress-relief-boxing.html']),
-            ('category-test-strong', ['signal-a', 'signal-b'], 'exercise-science', []),
-            ('category-test-weak', ['signal-a'], 'boxing-beginners', []),
+            ('category-test-strong', ['균형점검', '리듬점검'], 'exercise-science', []),
+            ('category-test-weak', ['균형점검'], 'boxing-beginners', []),
         ]
         for slug, tags, category, related in fixtures:
             meta = dict(base, slug=slug, tags=tags, category=category, related=related, draft=False,
@@ -115,9 +115,11 @@ class CategoryTests(unittest.TestCase):
         out = build(self.root)
         html = (out / 'articles/boxing-first-class.html').read_text(encoding='utf-8')
         panel = re.search(r'<div class="article-related-panel">(.*?)</div>', html, re.S)[1]
-        self.assertEqual(re.findall(r'href="([^"]+)"', panel), [
-            '/articles/stress-relief-boxing.html', '/articles/category-test-strong.html',
-            '/articles/category-test-weak.html', '/articles/index.html'])
+        links = re.findall(r'href="([^"]+)"', panel)
+        self.assertEqual(links[:2], ['/articles/category-test-strong.html',
+                                     '/articles/category-test-weak.html'])
+        self.assertEqual(len(links), 4)
+        self.assertEqual(links[-1], '/articles/index.html')
 
 
 if __name__ == '__main__':
