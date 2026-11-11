@@ -81,8 +81,9 @@ class RecommendationTests(unittest.TestCase):
         expected = {
             'boxing-technique': ('boxing-beginners', 'workout-programs'),
             'boxing-beginners': ('boxing-technique', 'workout-programs'),
-            'exercise-science': ('workout-programs', 'boxing-technique'),
-            'workout-programs': ('exercise-science', 'boxing-beginners'),
+            'exercise-science': ('workout-programs', 'weight-management', 'boxing-technique'),
+            'workout-programs': ('exercise-science', 'weight-management', 'boxing-beginners'),
+            'weight-management': ('exercise-science', 'workout-programs'),
             'match-analysis': ('boxing-technique', 'combat-history'),
             'combat-culture': ('combat-history', 'match-analysis'),
             'combat-history': ('match-analysis', 'combat-culture'),
@@ -91,11 +92,29 @@ class RecommendationTests(unittest.TestCase):
         for category, related in expected.items():
             with self.subTest(category=category):
                 source = article('source', category=category, title='리듬')
-                first = article('first', category=related[0], published='2026-11-10')
-                second = article('second', category=related[1], title='리듬', published='2020-01-01')
+                candidates = [article(f'candidate-{i}', category=value,
+                                      title='리듬' if i == 1 else '',
+                                      published='2020-01-01' if i == 1 else '2026-11-10')
+                              for i, value in enumerate(related)]
                 global_item = article('global', category='other', title='리듬')
-                self.assertEqual(urls(recommend_related(source, [global_item, first, second])),
-                                 urls([second, first, global_item]))
+                expected_order = [candidates[1], candidates[0], *candidates[2:], global_item][:3]
+                self.assertEqual(urls(recommend_related(source, [global_item, *candidates])),
+                                 urls(expected_order))
+
+    def test_weight_science_and_program_fallback_relations_are_reciprocal(self):
+        for left, right in [('weight-management', 'exercise-science'),
+                            ('weight-management', 'workout-programs'),
+                            ('workout-programs', 'exercise-science')]:
+            self.assertIn(right, RELATED_CATEGORIES[left])
+            self.assertIn(left, RELATED_CATEGORIES[right])
+        source = article('source', category='weight-management', tags=['체성분'])
+        direct = article('direct', category='combat-culture', tags=['체성분'])
+        same = article('same', category='weight-management')
+        science = article('science', category='exercise-science')
+        program = article('program', category='workout-programs', published='2026-11-11')
+        draft = article('draft', category='weight-management', tags=['체성분'], draft=True)
+        self.assertEqual(urls(recommend_related(source, [science, draft, source, same, direct, program])),
+                         urls([direct, same, program]))
 
     def test_global_fill_score_then_date_then_url_and_small_catalogs(self):
         source = article('source', title='리듬', category='combat-culture')

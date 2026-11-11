@@ -41,25 +41,26 @@ Python 표준 라이브러리로 NFKC 정규화·casefold 후 유니코드 단�
 
 1. **직접 연관:** 관련성 점수 4점 이상. 구체 구문이 상대 설명에 한 번 나타나거나, 제목의 의미 있는 단어 두 개가 겹치는 정도부터 해당합니다. 다른 카테고리여도 우선합니다.
 2. **동일 카테고리:** 1차가 아닌 글 중 같은 대표 카테고리.
-3. **연관 카테고리:** 1·2차가 아닌 글 중 아래 두 카테고리에 속한 글.
+3. **연관 카테고리:** 1·2차가 아닌 글 중 아래에 지정된 연관 카테고리에 속한 글.
 4. **최종 보충:** 그 외 나머지 공개 글.
 
 | 현재 카테고리 | 3차 후보 카테고리 |
 | --- | --- |
 | boxing-technique | boxing-beginners, workout-programs |
 | boxing-beginners | boxing-technique, workout-programs |
-| exercise-science | workout-programs, boxing-technique |
-| workout-programs | exercise-science, boxing-beginners |
+| exercise-science | workout-programs, weight-management, boxing-technique |
+| workout-programs | exercise-science, weight-management, boxing-beginners |
+| weight-management | exercise-science, workout-programs |
 | match-analysis | boxing-technique, combat-history |
 | combat-culture | combat-history, match-analysis |
 | combat-history | match-analysis, combat-culture |
 
-전체 정렬 키는 **단계 오름차순 → 점수 내림차순 → 게시일 최신순 → URL 오름차순**입니다. 3차의 두 카테고리는 한 후보 풀로 비교하며 표의 기재 순서로 점수·게시일·URL 우선순위를 덮어쓰지 않습니다. 수정일은 정렬에 사용하지 않습니다. 무작위·현재 시각·파일 열거 순서를 사용하지 않습니다. 방어적으로 같은 URL이 여러 번 들어오면 한 번만 선정하고, 동일 정렬 키의 중복 레코드는 관련 메타데이터의 고정 JSON 서명으로 결정합니다. 실제 빌더는 중복 공개 URL을 기존 정책대로 거부합니다.
+전체 정렬 키는 **단계 오름차순 → 점수 내림차순 → 게시일 최신순 → URL 오름차순**입니다. 3차의 연관 카테고리는 한 후보 풀로 비교하며 표의 기재 순서로 점수·게시일·URL 우선순위를 덮어쓰지 않습니다. 운동과학·운동 실전 연구소의 기존 연관 관계를 유지하면서 체중 관리를 추가했고, 체중 관리도 이 두 분류를 연관 후보로 사용합니다. 관계가 늘어도 직접 점수·4단계·정렬·최대 3개 규칙은 그대로입니다. 수정일은 정렬에 사용하지 않습니다. 무작위·현재 시각·파일 열거 순서를 사용하지 않습니다. 방어적으로 같은 URL이 여러 번 들어오면 한 번만 선정하고, 동일 정렬 키의 중복 레코드는 관련 메타데이터의 고정 JSON 서명으로 결정합니다. 실제 빌더는 중복 공개 URL을 기존 정책대로 거부합니다.
 
 ## 한계와 검수
 
 형태소 분석·동의어 사전·외부 API·LLM·서비스·런타임 JavaScript·새 의존성은 사용하지 않습니다. 조사는 제한적으로만 처리하므로 활용형·복합명사·동의어를 모두 이해하지 못합니다. 정확한 태그·키워드와 제목·설명이 중요합니다. 일반 단어 목록·배점은 설명 가능한 초기 규칙이며 의미상의 최적 추천을 보장하지 않습니다. 후보가 충분할 때 3개를 채우므로 마지막 보충은 주제 연관성이 낮을 수 있습니다.
 
-`tests/test_recommendations.py`는 점수·일반 단어 억제·교차 일치·7개 연관 카테고리·각 보충 단계·날짜/URL 동점·중복/초안/자기 제외·수동 필드 무효·레거시 결측 메타데이터를 검사합니다. 실제 빌드 테스트는 새 글 공개·초안 전환에 따른 기존 페이지 재계산, `related` 생략/무효 값 허용, 반복 빌드의 전체 파일 해시, 모든 공개 추천 패널과 보호 원본 바이트를 검증합니다. 기존 카테고리·태그·콘텐츠 회귀 테스트의 수동 추천 기대값만 새 계약으로 갱신합니다.
+`tests/test_recommendations.py`는 점수·일반 단어 억제·교차 일치·8개 카테고리의 연관 관계·각 보충 단계·날짜/URL 동점·중복/초안/자기 제외·수동 필드 무효·레거시 결측 메타데이터를 검사합니다. 체중 관리↔운동과학, 체중 관리↔운동 실전 연구소 및 운동 실전 연구소↔운동과학의 상호 관계도 검사합니다. 실제 빌드 테스트는 새 글 공개·초안 전환에 따른 기존 페이지 재계산, `related` 생략/무효 값 허용, 반복 빌드의 전체 파일 해시, 모든 공개 추천 패널과 보호 원본 바이트를 검증합니다. 기존 카테고리·태그·콘텐츠 회귀 테스트의 수동 추천 기대값만 자동 추천 계약으로 갱신합니다.
 
 필수 검증은 [게시 운영](publishing.md)을 따릅니다. `python -m unittest discover -s tests -p test_recommendations.py -v`로 추천 전용 검사를 실행할 수도 있습니다. 정기 콘텐츠 생성 러너와 외부 프리뷰 저장소의 변경은 이 구현 범위에 포함되지 않습니다.

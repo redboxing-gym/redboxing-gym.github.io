@@ -39,7 +39,7 @@ draft: true
 | --- | --- |
 | title / description | 비어 있지 않은 문자열. 검색 결과에 적합한 자연스러운 한국어 |
 | slug | 영문 소문자·숫자·단어 사이 하이픈. 파일명과 일치 |
-| category | 필수 문자열. [분류 정의](../scripts/categories.py)의 7개 식별자 중 하나. 대표 주제 하나를 선택 |
+| category | 필수 문자열. [분류 정의](../scripts/categories.py)의 8개 식별자 중 하나. 제목 단어보다 본문의 핵심 질문에 맞는 대표 주제 하나를 선택 |
 | published / updated | 따옴표로 감싼 YYYY-MM-DD. 수정일은 작성일 이후 또는 같은 날 |
 | keywords | 한 개 이상 문자열 목록 |
 | canonical | `https://redboxing-gym.github.io/articles/<slug>.html`과 정확히 일치 |
@@ -50,6 +50,8 @@ draft: true
 | draft | 따옴표 없는 `true` 또는 `false`, 반드시 명시 |
 
 카테고리 이름·순서는 `scripts/categories.py`에서만 관리합니다. `category`는 대표 분류이며 `tags`는 세부 주제 목록입니다. 태그와 kicker는 한글을 원본에 직접 저장하며 영문 ID를 중복 저장하거나 출력 시 번역하지 않습니다. 태그 사전은 미확정이므로 고정 허용 목록은 강제하지 않습니다. [태그 한글화 조사](tag-localization-review.md)의 임시 변환 기록·의미 검토 항목·러너 권고를 참고하세요. 초안에도 카테고리가 필요합니다. 기존 HTML 글의 카테고리·카드용 태그/kicker는 `content/legacy-articles.json`에서 관리하고 보호 HTML 원본은 수정하지 않습니다. 분류 기준과 여러 원고를 변경하는 구조 PR의 검수 방법은 [카테고리 시스템](category-system.md)을 참고하세요.
+
+체중 감량 전략·식사·정체기·체성분 관리의 선택이 중심이면 새 `weight-management`(다이어트·체중 관리)를 사용합니다. 운동 일정·방식 비교·챌린지·훈련 계획이 중심이면 `workout-programs`(운동 실전 연구소)를 사용하며 기존 식별자를 유지합니다. 에너지 소모·생리학·운동 효과의 과학적 해석은 `exercise-science`, 첫 수업·장비·체육관 선택 같은 입문 준비는 `boxing-beginners`입니다. 다이어트를 언급하는 것만으로 체중 관리로 분류하지 않습니다. 요일별 편집 주제는 참고하되 실제 본문의 핵심 질문을 우선하며, 전체 8개 식별자·순서·분류 경계는 [현재 카테고리 기준](category-system.md#현재-8개-카테고리)을 따릅니다.
 
 제목은 템플릿이 H1으로 만듭니다. 본문은 `##`부터 사용합니다. 문단, 목록, 강조, 링크, 이미지, 표, 코드 블록을 지원합니다. 원시 HTML·스크립트·iframe·HTML 자동 링크는 지원하지 않습니다. 링크는 `[문구](URL)`로 작성합니다. 문의 CTA·지점 전화·카카오톡은 템플릿에서 제공합니다.
 

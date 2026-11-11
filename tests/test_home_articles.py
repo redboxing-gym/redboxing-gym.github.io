@@ -37,6 +37,18 @@ class HomeSelectionTests(unittest.TestCase):
         self.assertEqual(home_article_groups(items), home_article_groups(items[::-1]))
         self.assertEqual(home_article_groups(items)[0]['articles'][0]['url'], '/articles/z.html')
 
+    def test_new_weight_group_is_omitted_when_empty_and_bounded_when_populated(self):
+        draft = dict(url='/articles/weight-draft.html', category='weight-management',
+                     published='2026-11-11', draft=True)
+        self.assertEqual(home_article_groups([draft]), [])
+        public = [dict(url=f'/articles/weight-{i}.html', category='weight-management',
+                       published=f'2026-11-0{i}') for i in range(1, 7)]
+        groups = home_article_groups([draft, *public])
+        self.assertEqual([(g['id'], g['label']) for g in groups],
+                         [('weight-management', '다이어트·체중 관리')])
+        self.assertEqual([a['url'] for a in groups[0]['articles']],
+                         [f'/articles/weight-{i}.html' for i in [6, 5, 4, 3]])
+
 
 class HomeBuildTests(unittest.TestCase):
     # Share fixture setup without inheriting/rerunning the category test methods.

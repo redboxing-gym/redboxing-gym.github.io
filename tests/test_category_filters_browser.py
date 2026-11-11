@@ -15,6 +15,8 @@ import urllib.request
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from build import ROOT, build, load_articles
 from categories import CATEGORIES
@@ -81,7 +83,7 @@ class CategoryFilterBrowserTests(unittest.TestCase):
         self.assertGreater(total, 5)
         self.assertEqual(page.locator('[data-article-card]:visible').count(), total)
         buttons = page.locator('[data-category-filter] button')
-        self.assertEqual(buttons.count(), 8)
+        self.assertEqual(buttons.count(), len(CATEGORIES) + 1)
         for category in CATEGORIES:
             button = page.locator(f'button[data-category="{category}"]')
             button.click()
@@ -133,7 +135,7 @@ class CategoryFilterBrowserTests(unittest.TestCase):
                     self.assertEqual(values['brokenImages'], 0)
                     if name == 'list':
                         self.assertTrue(page.locator('[data-category-filter]').is_visible())
-                        self.assertEqual(page.locator('[data-category-filter] button').count(), 8)
+                        self.assertEqual(page.locator('[data-category-filter] button').count(), len(CATEGORIES) + 1)
                         page.get_by_role('button', name='운동과학', exact=True).click()
                     elif name == 'article':
                         self.assertTrue(page.locator('.article-taxonomy .article-category').is_visible())
@@ -183,8 +185,61 @@ class CategoryFilterBrowserTests(unittest.TestCase):
             labels = page.locator('.article-card-label').all_text_contents()
             self.assertEqual(len(labels), len(legacy) + len([a for a in articles if not a['draft']]))
             self.assertTrue(all(not any(c.isascii() and c.isalpha() for c in label) for label in labels))
-            self.assertEqual(page.locator('[data-category-filter] button').count(), 8)
+            self.assertEqual(page.locator('[data-category-filter] button').count(), len(CATEGORIES) + 1)
         self.assertEqual(seen_tags, expected_tags)
+
+    def test_weight_category_empty_then_populated_in_existing_ui(self):
+        for width in [360, 390, 1440]:
+            page = self.page(width=width)
+            page.goto(self.url + '/articles/index.html', wait_until='networkidle')
+            button = page.get_by_role('button', name='다이어트·체중 관리', exact=True)
+            button.click()
+            self.assertEqual(page.locator('[data-article-card]:visible').count(), 0)
+            self.assertTrue(page.locator('[data-category-empty]').is_visible())
+            self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+            self.screenshot(page, f'weight-empty-{width}')
+
+        # Only the disposable test fixture changes. No production article is
+        # reclassified or published to populate an otherwise empty category.
+        draft = self.root / 'content/articles/boxing-first-class.md'
+        _, front, body = draft.read_text(encoding='utf-8').split('---', 2)
+        meta = yaml.safe_load(front)
+        meta.update(slug='weight-category-fixture', category='weight-management', draft=False,
+                    title='체중 관리 검증용 원고', tags=['체중 관리'], keywords=['체중 관리'],
+                    canonical='https://redboxing-gym.github.io/articles/weight-category-fixture.html')
+        target = draft.with_name('weight-category-fixture.md')
+        try:
+            target.write_text('---\n' + yaml.safe_dump(meta, allow_unicode=True)
+                              + '---\n' + body, encoding='utf-8')
+            build(self.root)
+            for width in [360, 390, 1440]:
+                with self.subTest(width=width):
+                    page = self.page(width=width)
+                    page.goto(self.url + '/articles/index.html', wait_until='networkidle')
+                    page.get_by_role('button', name='다이어트·체중 관리', exact=True).click()
+                    self.assertEqual(page.locator('[data-article-card]:visible').count(), 1)
+                    self.assertFalse(page.locator('[data-category-empty]').is_visible())
+                    self.assertEqual(page.locator('[data-article-card]:visible .article-category').inner_text(),
+                                     '다이어트·체중 관리')
+                    self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                    self.screenshot(page, f'weight-list-{width}')
+                    page.goto(self.url + '/#articles', wait_until='networkidle')
+                    page.locator('[data-home-ready="true"]').wait_for()
+                    page.get_by_role('tab', name='다이어트·체중 관리', exact=True).click()
+                    self.assertEqual(page.locator('#articles .article-card:visible').count(), 1)
+                    self.assertEqual(page.locator('#articles .article-card:visible').get_attribute('href'),
+                                     '/articles/weight-category-fixture.html')
+                    self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                    self.screenshot(page, f'weight-home-{width}')
+                    page.goto(self.url + '/articles/weight-category-fixture.html', wait_until='networkidle')
+                    self.assertEqual(page.locator('.article-taxonomy .article-category').inner_text(),
+                                     '카테고리 · 다이어트·체중 관리')
+                    self.assertEqual(page.locator('.article-related-panel a').count(), 4)
+                    self.assertLessEqual(page.evaluate('document.documentElement.scrollWidth'), width)
+                    self.screenshot(page, f'weight-article-{width}')
+        finally:
+            target.unlink(missing_ok=True)
+            build(self.root)
 
 
 if __name__ == '__main__':
