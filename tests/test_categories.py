@@ -15,6 +15,28 @@ from categories import CATEGORIES
 
 
 class CategoryTests(unittest.TestCase):
+    def test_eight_category_ids_labels_and_navigation_order(self):
+        self.assertEqual(list(CATEGORIES.items()), [
+            ('match-analysis', '경기 분석'), ('boxing-technique', '복싱 기술'),
+            ('exercise-science', '운동과학'), ('boxing-beginners', '복싱 입문'),
+            ('combat-culture', '격투기 문화'), ('workout-programs', '운동 실전 연구소'),
+            ('weight-management', '다이어트·체중 관리'), ('combat-history', '격투기 역사'),
+        ])
+
+    def test_diet_mentions_do_not_override_the_articles_main_questions(self):
+        _, legacy, articles = load_articles(self.root)
+        actual = {a['url']: a['category'] for a in legacy + articles}
+        for slug, category in {
+            'hangsin-diet-workout': 'workout-programs',
+            'euljiro-diet-workout': 'workout-programs',
+            'boxing-diet-beginner': 'boxing-beginners',
+            'boxing-calorie-burn': 'exercise-science',
+            'boxing-strength-concurrent-training': 'exercise-science',
+            'three-day-weekend-workout': 'workout-programs',
+        }.items():
+            with self.subTest(slug=slug):
+                self.assertEqual(actual[f'/articles/{slug}.html'], category)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

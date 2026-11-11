@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import test_category_filters_browser as fixture
+from build import home_article_groups
 
 
 @unittest.skipUnless(os.environ.get('RUN_BROWSER_TESTS') == '1',
@@ -48,6 +49,8 @@ class HomeArticleBrowserTests(unittest.TestCase):
         })''')
 
     def test_layout_limits_geometry_cta_and_map_stability(self):
+        _, legacy, articles = fixture.load_articles(self.root)
+        groups = home_article_groups(legacy + articles)
         for width in [360, 390, 1440]:
             with self.subTest(width=width):
                 page = self.home(width, clock=False)
@@ -55,22 +58,24 @@ class HomeArticleBrowserTests(unittest.TestCase):
                 before = self.position(page)
                 self.assertLessEqual(before['width'], width)
                 tabs = page.locator('#articles [role="tab"]')
-                self.assertEqual(tabs.count(), 5)
-                self.assertEqual(tabs.all_text_contents(),
-                                 ['경기 분석', '복싱 기술', '운동과학', '복싱 입문', '운동 프로그램'])
+                self.assertEqual(tabs.count(), len(groups))
+                self.assertEqual(tabs.all_text_contents(), [group['label'] for group in groups])
                 for i in range(tabs.count()):
                     tabs.nth(i).click()
                     cards = page.locator('#articles [data-article-card]:visible')
-                    self.assertEqual(cards.count(), 2 if width < 992 else 4)
+                    self.assertEqual(cards.count(), min(2 if width < 992 else 4,
+                                                       len(groups[i]['articles'])))
                     boxes = cards.evaluate_all('(cards) => cards.map(c => {const r = c.getBoundingClientRect(); return {x:r.x,y:r.y,width:r.width};})')
-                    if width < 992:
+                    if width < 992 and len(boxes) >= 2:
                         self.assertAlmostEqual(boxes[0]['x'], boxes[1]['x'], delta=1)
                         self.assertGreater(boxes[1]['y'], boxes[0]['y'])
-                    else:
+                    elif width >= 992 and len(boxes) >= 2:
                         self.assertAlmostEqual(boxes[0]['y'], boxes[1]['y'], delta=1)
-                        self.assertAlmostEqual(boxes[2]['y'], boxes[3]['y'], delta=1)
                         self.assertGreater(boxes[1]['x'], boxes[0]['x'])
+                    if width >= 992 and len(boxes) >= 3:
                         self.assertGreater(boxes[2]['y'], boxes[0]['y'])
+                    if width >= 992 and len(boxes) >= 4:
+                        self.assertAlmostEqual(boxes[2]['y'], boxes[3]['y'], delta=1)
                     image_rules = page.locator('#articles .article-card:visible img').first.evaluate(
                         '(i) => ({fit:getComputedStyle(i).objectFit,min:getComputedStyle(i).minHeight})')
                     self.assertEqual(image_rules, {'fit': 'cover', 'min': '288px'})

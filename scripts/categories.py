@@ -6,6 +6,7 @@ CATEGORIES = {
     'exercise-science': '운동과학',
     'boxing-beginners': '복싱 입문',
     'combat-culture': '격투기 문화',
-    'workout-programs': '운동 프로그램',
+    'workout-programs': '운동 실전 연구소',
+    'weight-management': '다이어트·체중 관리',
     'combat-history': '격투기 역사',
 }

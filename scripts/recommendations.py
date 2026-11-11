@@ -14,8 +14,9 @@ import unicodedata
 RELATED_CATEGORIES = {
     'boxing-technique': ('boxing-beginners', 'workout-programs'),
     'boxing-beginners': ('boxing-technique', 'workout-programs'),
-    'exercise-science': ('workout-programs', 'boxing-technique'),
-    'workout-programs': ('exercise-science', 'boxing-beginners'),
+    'exercise-science': ('workout-programs', 'weight-management', 'boxing-technique'),
+    'workout-programs': ('exercise-science', 'weight-management', 'boxing-beginners'),
+    'weight-management': ('exercise-science', 'workout-programs'),
     'match-analysis': ('boxing-technique', 'combat-history'),
     'combat-culture': ('combat-history', 'match-analysis'),
     'combat-history': ('match-analysis', 'combat-culture'),
