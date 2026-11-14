@@ -4,7 +4,7 @@ description: "2001년 세계선수권에서 시작해 2012년 런던 올림픽 �
 slug: "womens-boxing-olympic-debut-2012"
 category: "combat-history"
 published: "2026-11-11"
-updated: "2026-11-11"
+updated: "2026-11-14"
 keywords: ["여자 복싱 올림픽", "2012 런던 올림픽 복싱", "여자 복싱 역사"]
 canonical: "https://redboxing-gym.github.io/articles/womens-boxing-olympic-debut-2012.html"
 kicker: "출전 기회의 역사"
