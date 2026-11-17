@@ -56,6 +56,14 @@ draft: false
 
 오늘 운동에서는 복근 운동을 조금 남겨두고, 몸 전체를 움직이는 시간도 만들어 보세요.
 
+## 뱃살 관리, 복싱으로 시작해 볼까요?
+
+복근 운동에 전신 운동을 더하고 싶다면 복싱도 좋은 선택이에요. 펀치를 뻗고, 스텝을 밟고, 샌드백을 치는 동안 몸 전체를 활발하게 움직일 수 있거든요.
+
+복싱이 얼마나 많은 칼로리를 소모하는지 궁금하다면 **[복싱 칼로리 소모가 높은 이유, 다이어트 운동으로 효율적인 선택일까?](https://redboxing-gym.github.io/articles/boxing-calorie-burn.html)**도 읽어보세요.
+
+혼자 운동을 시작하기 어렵다면 **레드복싱에서 복싱의 재미를 직접 경험해 보세요!**
+
 ## 참고 자료
 
 - Vispute 외, 2011. [The effect of abdominal exercise on abdominal fat](https://pubmed.ncbi.nlm.nih.gov/21804427/)
