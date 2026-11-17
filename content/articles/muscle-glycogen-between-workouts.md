@@ -66,5 +66,5 @@ Alghannam 등의 2016년 연구에서는 지구력 훈련 경험이 있는 성�
 ## 참고 자료
 
 - Ørtenblad N, Westerblad H, Nielsen J. 2013. *Muscle glycogen stores and fatigue*. 저장 위치·에너지 공급과 피로 기전을 논의한 종설입니다. DOI: [10.1113/jphysiol.2013.251629](https://doi.org/10.1113/jphysiol.2013.251629). [공개 원문](https://pmc.ncbi.nlm.nih.gov/articles/PMC3784189/)
-- Jensen J, Rustad PI, Kolnes AJ, Lai YC. 2011. *The role of skeletal muscle glycogen breakdown for regulation of insulin sensitivity by exercise*. [운동 후 포도당 흡수와 글리코겐 합성 조절에 관한 종설](https://pmc.ncbi.nlm.nih.gov/articles/PMC3381815/) (2012년 공개 자료, 본문 설명의 근거).
+- Jensen TE, Richter EA. 2012. *Regulation of glucose and glycogen metabolism during and after exercise*. 운동 후 포도당 흡수, 인슐린 민감도 및 글리코겐 합성 조절을 설명한 종설입니다. DOI: [10.1113/jphysiol.2011.224972](https://doi.org/10.1113/jphysiol.2011.224972). [공개 원문](https://pmc.ncbi.nlm.nih.gov/articles/PMC3381815/)
 - Alghannam AF 외. 2016. *Impact of Muscle Glycogen Availability on the Capacity for Repeated Exercise in Man*. 지구력 훈련자 10명의 회복 중 탄수화물 공급과 반복 달리기를 비교한 원저 연구입니다. DOI: [10.1249/MSS.0000000000000737](https://doi.org/10.1249/MSS.0000000000000737). PMID: 26197030. [초록](https://pubmed.ncbi.nlm.nih.gov/26197030/)
