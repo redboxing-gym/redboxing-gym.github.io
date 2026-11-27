@@ -3,3 +3,5 @@ Allow: /
 
 Sitemap: https://redboxing-gym.github.io/sitemap.xml
 Sitemap: https://redboxing-gym.github.io/sitemap-pages.xml
+
+#DaumWebMasterTool:42026c182ba55f063761db90a08a7920eb4a255d31189c8758d2651a6b671312:bBY3xhlFAprgQb834vQqzA==
